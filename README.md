@@ -50,9 +50,12 @@ From the main branch student have to create a new feature branch were will cover
 
 Student works on the branch once accomplish assigment student have to create pull request(**to main branch**) and assign lector of the course to review.
 
-Lector reviewing the code after successfully passing of the review code will be approved and merged into **main** student branch. 
+Lector reviewing the code after author reviewed student can merge code into **main** student branch. 
 
-In case there are some comments from author, student have to resolve them (answer or refactor code accordingly) and push changes and lector will review it again.
+In case there are some comments from author, student have to fix and resolve them(press 'Resolve conversation''). 
+In case user don't agree with comment or have any additional question, or comment wasn't clear he type question in conversation,
+we will try to resolve that. After all that student tweak code according to comments and push changes. 
+If all conversation was resolved he can merge feature branch and delete(feature branch).
 
 **NOTE**: after merging feature branch into main one, feature branch have to be deleted.
 
@@ -66,9 +69,39 @@ Feature branch - `<student-name>/lesson-<number>/<smart-comment> (e.g. yaroslav-
 Commit message - `#<issue_number> - some smart commit message`
 
 ## Design
-There is no specific design for project. Design it's up to developer.
+There is no specific design for project. Design it's up to developer(student).
+ 
+Live demo:  https://demo.realworld.io/#/
 
-**Recommendation**: It better to not use any lib in order to practice styles(plain css). 
+**Recommendation**: It better to not use any lib (with existing components) in order to practice styles(plain css). 
+
+## Front-end
+
+#### Routing Guidelines
+
+- Home page (URL: /#/ )
+    - List of tags
+    - List of articles pulled from either Feed, Global, or by Tag
+    - Pagination for list of articles
+- Sign in/Sign up pages (URL: /#/login, /#/register )
+    - Uses JWT (store the token in localStorage)
+    - Authentication can be easily switched to session/cookie based
+- Settings page (URL: /#/settings )
+- Editor page to create/edit articles (URL: /#/editor, /#/editor/article-slug-here )
+- Article page (URL: /#/article/article-slug-here )
+    - Delete article button (only shown to article's author)
+    - Render markdown from server client side
+    - Comments section at bottom of page
+    - Delete comment button (only shown to comment's author)
+- Profile page (URL: /#/profile/:username, /#/profile/:username/favorites )
+    - Show basic user info
+    - List of articles populated from author's created articles or author's favorited articles
+
+Like a ref you can use live demo: https://demo.realworld.io/#/ for understanding how it should looks like.
+
+But very often on practice for front-end development no design (even wireframes) to build new pages(apps), 
+and design and structure have to be build based on customer specs often by FE dev.
+So try to develop your creativity (and design as well 😉)
 
 ## Backend side
 
