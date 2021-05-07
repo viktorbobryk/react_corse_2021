@@ -85,7 +85,6 @@ Live demo:  https://demo.realworld.io/#/
     - Pagination for list of articles
 - Sign in/Sign up pages (URL: /#/login, /#/register )
     - Uses JWT (store the token in localStorage)
-    - Authentication can be easily switched to session/cookie based
 - Settings page (URL: /#/settings )
 - Editor page to create/edit articles (URL: /#/editor, /#/editor/article-slug-here )
 - Article page (URL: /#/article/article-slug-here )
@@ -95,7 +94,7 @@ Live demo:  https://demo.realworld.io/#/
     - Delete comment button (only shown to comment's author)
 - Profile page (URL: /#/profile/:username, /#/profile/:username/favorites )
     - Show basic user info
-    - List of articles populated from author's created articles or author's favorited articles
+    - List of articles populated from author's created articles or author's favorite articles
 
 Like a ref you can use live demo: https://demo.realworld.io/#/ for understanding how it should looks like.
 
