@@ -1,0 +1,6 @@
+.Editor{
+    flex-wrap: wrap;
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+}

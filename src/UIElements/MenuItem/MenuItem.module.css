@@ -1,0 +1,18 @@
+.MenuItem{
+    display: inline-block;
+    text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.4);
+    margin-left: 10px;
+    list-style-type: none;
+}
+.MenuItem:hover{
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.article::before {
+    font-family: "Font Awesome 5 Free", serif; font-weight: 900; content: "\f044";
+}
+
+.settings::before {
+    font-family: "Font Awesome 5 Free", serif; font-weight: 900; content: "\f013";
+}

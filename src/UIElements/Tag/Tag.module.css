@@ -1,0 +1,24 @@
+.Tag{
+    margin: 2px;
+    padding: 0 5px 1px;
+    border-radius: 11px;
+    display: inline-block;
+    font-size: 14px;
+}
+.Tag:hover{
+    cursor: pointer;
+}
+
+.darkTag{
+    background-color: #818a91;
+    color: white;
+}
+.darkTag:hover{
+    background-color: #687077;
+}
+
+.liteTag{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: #ddd;
+}

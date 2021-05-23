@@ -1,0 +1,17 @@
+.Tabs{
+
+}
+.Tabs ul{
+    padding-left: 0;
+}
+.Tabs li{
+    list-style-type: none;
+    display: inline-block;
+    margin-left: 5px;
+    padding: 5px 10px;
+    color: rgba(0, 0, 0, 0.4);
+}
+.Tabs li:hover{
+    color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}

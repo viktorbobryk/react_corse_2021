@@ -1,0 +1,52 @@
+.Button {
+    background-color: transparent;
+    border: none;
+    color: #bbb;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.Like {
+    border: 2px solid #5CB85C;
+    color: #5CB85C;
+    border-radius: 5px;
+    text-align: right;
+    padding: 5px 10px;
+}
+.Like:hover{
+    background: #5CB85C;
+    color: white;
+}
+.Like::before{
+    font-family: "Font Awesome 5 Free", serif; font-weight: 900; content: "\f004";
+    margin-right: 5px;
+}
+
+.ReadMore{
+    border: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.Primary {
+    color: #fff;
+    background-color: #5CB85C;
+    border-color: #5CB85C;
+    border-radius: 10px;
+    width: 170px;
+    margin-right: 0;
+    float: right;
+}
+.Primary:hover {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #419641;
+}
+
+.Danger {
+    color: #944317;
+}
