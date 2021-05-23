@@ -3,3 +3,13 @@
     margin: 0 auto;
 }
 
+.Form h2{
+    text-align: center;
+}
+.Form span{
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #5CB85C;
+}

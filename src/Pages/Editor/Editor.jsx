@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './Editir.module.css';
+import classes from './Editor.module.css';
 import Header from '../../Components/Header/Header';
 import Form from '../../Components/Form/Form';
 import Input from '../../UIElements/Input/Input';

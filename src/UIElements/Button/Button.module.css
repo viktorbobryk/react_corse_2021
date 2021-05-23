@@ -7,7 +7,6 @@
     font: inherit;
     padding: 10px;
     margin: 10px;
-    font-weight: bold;
 }
 
 .Like {
@@ -36,7 +35,7 @@
     color: #fff;
     background-color: #5CB85C;
     border-color: #5CB85C;
-    border-radius: 10px;
+    border-radius: 8px;
     width: 170px;
     margin-right: 0;
     float: right;
@@ -48,5 +47,13 @@
 }
 
 .Danger {
-    color: #944317;
+    color: #B85C5C;
+    background-image: none;
+    background-color: transparent;
+    border: 1px solid #B85C5C;
+    border-radius: 5px;
+}
+.Danger:hover{
+    background-color: #B85C5C;
+    color: white;
 }
