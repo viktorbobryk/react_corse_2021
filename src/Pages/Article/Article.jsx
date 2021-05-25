@@ -7,6 +7,7 @@ import Input from '../../UIElements/Input/Input';
 import Button from '../../UIElements/Button/Button';
 import Banner from '../../Components/Banner/Banner';
 import UserInfo from '../../Components/UserInfo/UserInfo';
+import Comments from '../../Components/Comments/Comments';
 
 const Article = () => (
   <div className={classes.Article}>
@@ -25,6 +26,7 @@ const Article = () => (
         <Input inputType="textareaElement" rows="8" placeholder="Write a comment..." />
         <Button btnType="Primary" type="button">Post Comment</Button>
       </Form>
+      <Comments />
     </Content>
   </div>
 );
