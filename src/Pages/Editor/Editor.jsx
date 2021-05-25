@@ -1,14 +1,12 @@
 import React from 'react';
 
 import classes from './Editor.module.css';
-import Header from '../../Components/Header/Header';
 import Form from '../../Components/Form/Form';
 import Input from '../../UIElements/Input/Input';
 import Button from '../../UIElements/Button/Button';
 
 const Editor = () => (
   <div className={classes.Editor}>
-    <Header />
     <Form>
       <Input inputType="inputElement" type="text" name="title" placeholder="Article Title" />
       <Input inputType="inputElement" type="text" name="about" placeholder="What's this article about?" />

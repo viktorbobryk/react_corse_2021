@@ -7,7 +7,7 @@ import Articles from '../../Components/Articles/Articles';
 import Content from '../../Components/Content/Content';
 import Pagination from '../../Components/Pagination/Pagination';
 
-const tabs = ['Your Feed', 'Globa lFeed', '#TagNAme'];
+const tabs = ['Your Feed', 'Global Feed', '#TagName'];
 
 const Home = () => (
   <div className={classes.HomePage}>

@@ -7,6 +7,8 @@ import ArticlePreview from '../ArticlePreview/ArticlePreview';
 
 const Articles = () => (
   <div className={classes.Articles}>
+
+    {/* in the future we will get the name of the active tab from parent component through props and we will filter the array of articles */}
     {articles.map((article) => (
       <ArticlePreview
         key={article.id}

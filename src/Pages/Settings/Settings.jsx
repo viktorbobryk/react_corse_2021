@@ -7,7 +7,7 @@ import Button from '../../UIElements/Button/Button';
 
 const Settings = () => (
   <div className={classes.Settings}>
-    <Form title="Your Settings">
+    <Form formTitle="Your Settings">
       <Input inputType="inputElement" type="text" name="url" placeholder="URL of profile picture" />
       <Input inputType="inputElement" type="text" name="userName" placeholder="userName" />
       <Input inputType="textareaElement" rows="8" placeholder="Short bio about you" />

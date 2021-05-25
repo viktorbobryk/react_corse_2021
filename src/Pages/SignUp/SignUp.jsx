@@ -7,7 +7,7 @@ import Button from '../../UIElements/Button/Button';
 
 const SignUp = () => (
   <div className={classes.SignUp}>
-    <Form title="Sign Up" text="Have an account?">
+    <Form formTitle="Sign Up" text="Have an account?">
       <Input inputType="inputElement" type="text" placeholder="Username" />
       <Input inputType="inputElement" type="email" placeholder="Email" />
       <Input inputType="inputElement" type="password" placeholder="Password" />
