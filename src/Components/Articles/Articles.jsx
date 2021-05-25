@@ -13,7 +13,8 @@ const Articles = () => (
         likes={article.likes}
         userName={article.userName}
         title={article.title}
-        text={article}
+        text={article.text}
+        date={article.date}
       />
     ))}
   </div>

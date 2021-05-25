@@ -3,18 +3,25 @@ import React from 'react';
 import classes from './UserInfo.module.css';
 import Button from '../../UIElements/Button/Button';
 
-const UserInfo = () => (
+const UserInfo = ({
+  // eslint-disable-next-line react/prop-types
+  text, userName, title, date, showInfo,
+}) => (
   <div className={classes.UserInfo}>
     <div className={classes.user}>
       <div className={classes.avatar} />
       <div className={classes.info}>
-        <p>user name</p>
-        <p>May 23, 2001</p>
+        <p>{userName}</p>
+        <p>{date}</p>
       </div>
     </div>
-    <h2>bla bla bla</h2>
-    <p>some text</p>
-    <Button btnType="ReadMore">Read more ...</Button>
+    {showInfo && (
+    <div className="extraInfo">
+      <h2>{title}</h2>
+      <p>{text}</p>
+      <Button btnType="ReadMore">Read more ...</Button>
+    </div>
+    )}
   </div>
 );
 

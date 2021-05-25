@@ -1,0 +1,11 @@
+.Banner{
+    display: flex;
+    flex-wrap: wrap;
+    color: #fff;
+    background: #333;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+}
+.Banner h2{
+    flex: 0 0 100%;
+}

@@ -6,11 +6,12 @@ import Button from '../../UIElements/Button/Button';
 import Tag from '../../UIElements/Tag/Tag';
 
 const ArticlePreview = ({
-  // eslint-disable-next-line react/prop-types
-  likes, text, userName, title,
+  // eslint-disable-next-line react/prop-types,no-unused-vars
+  likes, text, userName, title, date,
 }) => (
+
   <div className={classes.ArticlePreview}>
-    <UserInfo userName={userName} title={title} text={text} />
+    <UserInfo userName={userName} title={title} date={date} text={text} showInfo="true" />
     <div className={classes.rightSide}>
       <Button btnType="Like">{likes}</Button>
       <div>

@@ -15,7 +15,7 @@ const Settings = () => (
       <Input inputType="inputElement" type="password" placeholder="New Password" />
       <Button type="button" btnType="Primary">Update Settings</Button>
       <hr style={{ width: '100%' }} />
-      <Button type="button" btnType="Danger">Or click here to logout.</Button>
+      <Button type="button" btnType="Danger-outline">Or click here to logout.</Button>
     </Form>
   </div>
 );

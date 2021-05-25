@@ -25,7 +25,7 @@
     margin-right: 5px;
 }
 
-.ReadMore{
+.Light{
     border: none;
     margin-left: 0;
     padding-left: 0;
@@ -45,15 +45,50 @@
     background-color: #449d44;
     border-color: #419641;
 }
+.Secondary{
+    color: #fff;
+    background-color: #ccc;
+    border-color: #ccc;
+}
+.Secondary:hover{
+    color: #ccc;
+    background-image: none;
+    background-color: transparent;
+    border-color: #ccc;
+}
+
+.Secondary-outline{
+    color: #ccc;
+    background-image: none;
+    background-color: transparent;
+    border: 1px solid #ccc;
+}
+.Secondary-outline:hover{
+    color: #fff;
+    background-color: #ccc;
+    border-color: #ccc;
+}
 
 .Danger {
+    color: #fff;
+    background-color: #B85C5C;
+    border-color: #B85C5C;
+}
+.Danger:hover{
+    color: #B85C5C;
+    background-image: none;
+    background-color: transparent;
+    border-color: #B85C5C;
+}
+
+.Danger-outline{
     color: #B85C5C;
     background-image: none;
     background-color: transparent;
     border: 1px solid #B85C5C;
-    border-radius: 5px;
 }
-.Danger:hover{
+.Danger-outline:hover{
+    color: #fff;
     background-color: #B85C5C;
-    color: white;
+    border-color: #B85C5C;
 }

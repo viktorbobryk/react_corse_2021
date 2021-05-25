@@ -2,12 +2,14 @@ import React from 'react';
 
 import classes from './Tabs.module.css';
 
-const Tabs = () => (
+// eslint-disable-next-line react/prop-types
+const Tabs = ({ tabs }) => (
   <div className={classes.Tabs}>
     <ul>
-      <li>Your Feed</li>
-      <li>GlobalFeed</li>
-      <li>#TagNAme</li>
+      {/* eslint-disable-next-line react/prop-types */}
+      {tabs.map((tab) => (
+        <li>{tab}</li>
+      ))}
     </ul>
   </div>
 );
