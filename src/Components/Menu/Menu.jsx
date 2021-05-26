@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './Menu.module.css';
 
-import MenuItem from '../../UIElements/MenuItem/MenuItem';
+import MenuItem from '../../UIElements/MenuItem';
 
 const Menu = () => (
   <div className={classes.Menu}>

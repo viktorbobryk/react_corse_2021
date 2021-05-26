@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './UserInfo.module.css';
-import Button from '../../UIElements/Button/Button';
+import Button from '../../UIElements/Button';
 
 const UserInfo = ({
   // eslint-disable-next-line react/prop-types

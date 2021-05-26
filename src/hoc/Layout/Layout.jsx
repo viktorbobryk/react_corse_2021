@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './Layout.module.css';
-import Header from '../../Components/Header/Header';
+import Header from '../../Components/Header';
 
 // eslint-disable-next-line react/prop-types
 const Layout = ({ children }) => (

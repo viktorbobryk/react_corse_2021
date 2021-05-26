@@ -1,9 +1,9 @@
 import React from 'react';
 
 import classes from './SignUp.module.css';
-import Form from '../../Components/Form/Form';
-import Input from '../../UIElements/Input/Input';
-import Button from '../../UIElements/Button/Button';
+import Form from '../../Components/Form';
+import Input from '../../UIElements/Input';
+import Button from '../../UIElements/Button';
 
 const SignUp = () => (
   <div className={classes.SignUp}>

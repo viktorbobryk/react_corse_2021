@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './Tags.module.css';
-import Tag from '../../UIElements/Tag/Tag';
+import Tag from '../../UIElements/Tag';
 
 const Tags = () => (
 

@@ -3,7 +3,7 @@ import React from 'react';
 import articles from '../../articles';
 
 import classes from './Articles.module.css';
-import ArticlePreview from '../ArticlePreview/ArticlePreview';
+import ArticlePreview from '../ArticlePreview';
 
 const Articles = () => (
   <div className={classes.Articles}>

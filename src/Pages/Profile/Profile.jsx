@@ -1,9 +1,9 @@
 import React from 'react';
 
 import classes from './Profile.module.css';
-import Button from '../../UIElements/Button/Button';
-import Tabs from '../../Components/Tabs/Tabs';
-import Articles from '../../Components/Articles/Articles';
+import Button from '../../UIElements/Button';
+import Tabs from '../../Components/Tabs';
+import Articles from '../../Components/Articles';
 
 import avatar from '../../assets/images/smiley-cyrus.jpg';
 

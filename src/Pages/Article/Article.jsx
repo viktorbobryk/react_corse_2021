@@ -1,13 +1,13 @@
 import React from 'react';
 
 import classes from './Article.module.css';
-import Content from '../../Components/Content/Content';
-import Form from '../../Components/Form/Form';
-import Input from '../../UIElements/Input/Input';
-import Button from '../../UIElements/Button/Button';
-import Banner from '../../Components/Banner/Banner';
-import UserInfo from '../../Components/UserInfo/UserInfo';
-import Comments from '../../Components/Comments/Comments';
+import Content from '../../Components/Content';
+import Form from '../../Components/Form';
+import Input from '../../UIElements/Input';
+import Button from '../../UIElements/Button';
+import Banner from '../../Components/Banner';
+import UserInfo from '../../Components/UserInfo';
+import Comments from '../../Components/Comments';
 
 const Article = () => (
   <div className={classes.Article}>

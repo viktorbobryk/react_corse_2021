@@ -1,11 +1,11 @@
 import React from 'react';
 
 import classes from './Home.module.css';
-import Sidebar from '../../Components/Sidebar/Sidebar';
-import Tabs from '../../Components/Tabs/Tabs';
-import Articles from '../../Components/Articles/Articles';
-import Content from '../../Components/Content/Content';
-import Pagination from '../../Components/Pagination/Pagination';
+import Sidebar from '../../Components/Sidebar';
+import Tabs from '../../Components/Tabs';
+import Articles from '../../Components/Articles';
+import Content from '../../Components/Content';
+import Pagination from '../../Components/Pagination';
 
 const tabs = ['Your Feed', 'Global Feed', '#TagName'];
 

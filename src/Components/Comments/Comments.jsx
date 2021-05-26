@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './Comments.module.css';
-import Comment from '../Comment/Comment';
+import Comment from '../Comment';
 
 const comments = [{
   id: '1', userName: 'user name', date: 'May 25, 2021', text: 'some comment',

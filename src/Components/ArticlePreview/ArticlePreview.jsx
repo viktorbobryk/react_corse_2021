@@ -1,9 +1,9 @@
 import React from 'react';
 
 import classes from './ArticlePreview.module.css';
-import UserInfo from '../UserInfo/UserInfo';
-import Button from '../../UIElements/Button/Button';
-import Tag from '../../UIElements/Tag/Tag';
+import UserInfo from '../UserInfo';
+import Button from '../../UIElements/Button';
+import Tag from '../../UIElements/Tag';
 
 const ArticlePreview = ({
   // eslint-disable-next-line react/prop-types,no-unused-vars

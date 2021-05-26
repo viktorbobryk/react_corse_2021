@@ -1,8 +1,8 @@
 import React from 'react';
 
 import classes from './Comment.module.css';
-import UserInfo from '../UserInfo/UserInfo';
-import Button from '../../UIElements/Button/Button';
+import UserInfo from '../UserInfo';
+import Button from '../../UIElements/Button';
 
 // eslint-disable-next-line react/prop-types
 const Comment = ({ username, date, text }) => (
