@@ -1,10 +1,11 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import classes from './Comment.module.css';
 import UserInfo from '../UserInfo';
 import Button from '../../UIElements/Button';
 
-// eslint-disable-next-line react/prop-types
 const Comment = ({ username, date, text }) => (
   <div className={classes.Comment}>
     <div className={classes.text}>{text}</div>
@@ -15,5 +16,10 @@ const Comment = ({ username, date, text }) => (
 
   </div>
 );
+Comment.propTypes = {
+  username: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
 
 export default Comment;

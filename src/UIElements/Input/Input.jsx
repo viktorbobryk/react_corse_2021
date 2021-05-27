@@ -1,13 +1,15 @@
 import React from 'react';
+
+import PropTypes from 'prop-types';
+
 import classes from './Input.module.css';
 
 const Input = ({
-  // eslint-disable-next-line react/prop-types
+
   inputType, type, name, placeholder, rows,
 }) => {
-  let inputElement = null;
+  let inputElement;
 
-  // eslint-disable-next-line react/prop-types
   switch (inputType) {
     case ('inputElement'):
       inputElement = (
@@ -40,6 +42,19 @@ const Input = ({
       {inputElement}
     </div>
   );
+};
+
+Input.defaultProps = {
+  rows: '',
+  type: '',
+};
+
+Input.propTypes = {
+  inputType: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  rows: PropTypes.string,
 };
 
 export default Input;

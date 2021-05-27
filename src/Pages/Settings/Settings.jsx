@@ -10,9 +10,9 @@ const Settings = () => (
     <Form formTitle="Your Settings">
       <Input inputType="inputElement" type="text" name="url" placeholder="URL of profile picture" />
       <Input inputType="inputElement" type="text" name="userName" placeholder="userName" />
-      <Input inputType="textareaElement" rows="8" placeholder="Short bio about you" />
-      <Input inputType="inputElement" type="email" placeholder="Email" />
-      <Input inputType="inputElement" type="password" placeholder="New Password" />
+      <Input inputType="textareaElement" rows="8" name="textarea" placeholder="Short bio about you" />
+      <Input inputType="inputElement" type="email" name="email" placeholder="Email" />
+      <Input inputType="inputElement" type="password" name="password" placeholder="New Password" />
       <Button type="button" btnType="Primary">Update Settings</Button>
       <hr style={{ width: '100%' }} />
       <Button type="button" btnType="Danger-outline">Or click here to logout.</Button>

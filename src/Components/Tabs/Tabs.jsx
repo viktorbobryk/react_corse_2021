@@ -1,17 +1,21 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import classes from './Tabs.module.css';
 
-// eslint-disable-next-line react/prop-types
 const Tabs = ({ tabs }) => (
   <div className={classes.Tabs}>
     <ul>
-      {/* eslint-disable-next-line react/prop-types */}
       {tabs.map((tab) => (
-        <li>{tab}</li>
+        <li key={tab}>{tab}</li>
       ))}
     </ul>
   </div>
 );
+
+Tabs.propTypes = {
+  tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default Tabs;

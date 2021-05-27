@@ -1,10 +1,11 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import classes from './UserInfo.module.css';
 import Button from '../../UIElements/Button';
 
 const UserInfo = ({
-  // eslint-disable-next-line react/prop-types
   text, userName, title, date, showInfo,
 }) => (
   <div className={classes.UserInfo}>
@@ -24,5 +25,19 @@ const UserInfo = ({
     )}
   </div>
 );
+
+UserInfo.defaultProps = {
+  text: '',
+  title: '',
+  showInfo: false,
+};
+
+UserInfo.propTypes = {
+  text: PropTypes.string,
+  userName: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  date: PropTypes.string.isRequired,
+  showInfo: PropTypes.bool,
+};
 
 export default UserInfo;
