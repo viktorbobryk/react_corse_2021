@@ -1,0 +1,13 @@
+.Article{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.articleContent p{
+    margin-bottom: 40px;
+}
+.articleActions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

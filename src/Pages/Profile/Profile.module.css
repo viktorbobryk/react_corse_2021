@@ -1,0 +1,11 @@
+.Profile{
+
+}
+.user{
+    text-align: center;
+    background: #f3f3f3;
+    padding: 20px 0 10px 0;
+}
+.user img{
+    border-radius: 50%;
+}

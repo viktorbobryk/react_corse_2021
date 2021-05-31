@@ -1,0 +1,28 @@
+.UserInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.avatar{
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    background-size: cover;
+    border-radius: 50%;
+    background-image: url("../../assets/images/smiley-cyrus.jpg");
+}
+.user{
+    display: flex;
+    align-items: center;
+}
+.info p{
+    margin: 0 0 0 10px;
+}
+.info p:first-child{
+    color: #5CB85C;
+    font-weight: bold;
+}
+.UserInfo p{
+    margin: 0
+}

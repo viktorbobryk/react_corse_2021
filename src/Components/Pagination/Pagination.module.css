@@ -1,0 +1,18 @@
+.Pagination{
+    flex: 0 0 100%;
+}
+.Pagination ul{
+    padding-left: 0;
+}
+.Pagination li{
+    list-style-type: none;
+    display: inline-block;
+    border: 1px solid #bbb;
+    margin-left: 5px;
+    padding: 5px 10px;
+    color:  #5CB85C;
+}
+.Pagination li:hover{
+    background-color: #eceeef;
+    cursor: pointer;
+}

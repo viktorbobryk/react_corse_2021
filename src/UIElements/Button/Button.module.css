@@ -1,0 +1,94 @@
+.Button {
+    background-color: transparent;
+    border: none;
+    color: #bbb;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+}
+
+.Like {
+    border: 2px solid #5CB85C;
+    color: #5CB85C;
+    border-radius: 5px;
+    text-align: right;
+    padding: 5px 10px;
+}
+.Like:hover{
+    background: #5CB85C;
+    color: white;
+}
+.Like::before{
+    font-family: "Font Awesome 5 Free", serif; font-weight: 900; content: "\f004";
+    margin-right: 5px;
+}
+
+.Light{
+    border: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.Primary {
+    color: #fff;
+    background-color: #5CB85C;
+    border-color: #5CB85C;
+    border-radius: 8px;
+    width: 170px;
+    margin-right: 0;
+    float: right;
+}
+.Primary:hover {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #419641;
+}
+.Secondary{
+    color: #fff;
+    background-color: #ccc;
+    border-color: #ccc;
+}
+.Secondary:hover{
+    color: #ccc;
+    background-image: none;
+    background-color: transparent;
+    border-color: #ccc;
+}
+
+.Secondary-outline{
+    color: #ccc;
+    background-image: none;
+    background-color: transparent;
+    border: 1px solid #ccc;
+}
+.Secondary-outline:hover{
+    color: #fff;
+    background-color: #ccc;
+    border-color: #ccc;
+}
+
+.Danger {
+    color: #fff;
+    background-color: #B85C5C;
+    border-color: #B85C5C;
+}
+.Danger:hover{
+    color: #B85C5C;
+    background-image: none;
+    background-color: transparent;
+    border-color: #B85C5C;
+}
+
+.Danger-outline{
+    color: #B85C5C;
+    background-image: none;
+    background-color: transparent;
+    border: 1px solid #B85C5C;
+}
+.Danger-outline:hover{
+    color: #fff;
+    background-color: #B85C5C;
+    border-color: #B85C5C;
+}

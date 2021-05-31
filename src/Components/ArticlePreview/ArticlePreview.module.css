@@ -1,0 +1,13 @@
+.ArticlePreview{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+.rightSide{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
