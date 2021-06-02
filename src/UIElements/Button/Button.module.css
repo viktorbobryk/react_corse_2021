@@ -1,7 +1,7 @@
 .Button {
     background-color: transparent;
     border: none;
-    color: #bbb;
+    color: var(--grey);
     outline: none;
     cursor: pointer;
     font: inherit;
@@ -10,15 +10,15 @@
 }
 
 .Like {
-    border: 2px solid #5CB85C;
-    color: #5CB85C;
+    border: 2px solid var(--green);
+    color: var(--green);
     border-radius: 5px;
     text-align: right;
     padding: 5px 10px;
 }
 .Like:hover{
-    background: #5CB85C;
-    color: white;
+    background: var(--green);
+    color: var(--white);
 }
 .Like::before{
     font-family: "Font Awesome 5 Free", serif; font-weight: 900; content: "\f004";
@@ -32,9 +32,9 @@
 }
 
 .Primary {
-    color: #fff;
-    background-color: #5CB85C;
-    border-color: #5CB85C;
+    color: var(--white);
+    background-color: var(--green);
+    border-color: var(--green);
     border-radius: 8px;
     width: 170px;
     margin-right: 0;
@@ -42,53 +42,56 @@
 }
 .Primary:hover {
     color: #fff;
-    background-color: #449d44;
-    border-color: #419641;
+    background-color: var(--dark-green);
+    border-color: var(--dark-green);
 }
 .Secondary{
     color: #fff;
-    background-color: #ccc;
-    border-color: #ccc;
+    background-color: var(--grey);
+    border-color: var(--grey);
 }
 .Secondary:hover{
     color: #ccc;
     background-image: none;
-    background-color: transparent;
-    border-color: #ccc;
+    background-color: var(--transparent);
+    border-color: var(--grey);
 }
 
 .Secondary-outline{
     color: #ccc;
     background-image: none;
-    background-color: transparent;
-    border: 1px solid #ccc;
+    background-color: var(--transparent);
+    border: 1px solid var(--grey);
 }
 .Secondary-outline:hover{
-    color: #fff;
-    background-color: #ccc;
-    border-color: #ccc;
+    color: var(--white);
+    background-color: var(--grey);
+    border-color: var(--grey);
 }
 
 .Danger {
-    color: #fff;
-    background-color: #B85C5C;
-    border-color: #B85C5C;
+    color: var(--white);
+    background-color: var(--red);
+    border-color: var(--red);
 }
 .Danger:hover{
-    color: #B85C5C;
+    color: var(--red);
     background-image: none;
-    background-color: transparent;
-    border-color: #B85C5C;
+    background-color: var(--transparent);
+    border-color: var(--red);
 }
 
 .Danger-outline{
-    color: #B85C5C;
+    color: var(--red);
     background-image: none;
-    background-color: transparent;
-    border: 1px solid #B85C5C;
+    background-color: var(--transparent);
+    border: 1px solid var(--red);
 }
 .Danger-outline:hover{
-    color: #fff;
-    background-color: #B85C5C;
-    border-color: #B85C5C;
+    color: var(--white);
+    background-color: var(--red);
+    border-color: var(--red);
+}
+.Simple{
+
 }

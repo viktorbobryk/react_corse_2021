@@ -1,9 +1,10 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import classes from './UserInfo.module.css';
 import Button from '../../UIElements/Button';
+
+import BUTTON_TYPE from '../../configs/buttons';
 
 const UserInfo = ({
   text, userName, title, date, showInfo,
@@ -17,10 +18,10 @@ const UserInfo = ({
       </div>
     </div>
     {showInfo && (
-    <div className="extraInfo">
+    <div className={classes.extraInfo}>
       <h2>{title}</h2>
       <p>{text}</p>
-      <Button btnType="ReadMore">Read more ...</Button>
+      <Button btnType={BUTTON_TYPE.SIMPLE}>Read more ...</Button>
     </div>
     )}
   </div>

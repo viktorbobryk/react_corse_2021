@@ -1,20 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Menu.module.css';
-
 import MenuItem from '../../UIElements/MenuItem';
 
-const Menu = () => (
+const Menu = ({ menuItems }) => (
   <div className={classes.Menu}>
     <ul>
-      <MenuItem>Home</MenuItem>
-      <MenuItem>SignIn</MenuItem>
-      <MenuItem>SignUp</MenuItem>
-      <MenuItem itemType="article">New Article</MenuItem>
-      <MenuItem itemType="settings">Settings</MenuItem>
-      <MenuItem>UserName</MenuItem>
+      {menuItems.map((item) => (
+        <MenuItem key={item.id} itemType={item.itemType}>{item.menuItemName}</MenuItem>
+      ))}
     </ul>
   </div>
 );
+
+Menu.propTypes = {
+  menuItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Menu;

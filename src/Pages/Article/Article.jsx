@@ -1,34 +1,46 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Article.module.css';
 import Content from '../../Components/Content';
 import Form from '../../Components/Form';
-import Input from '../../UIElements/Input';
+import TextArea from '../../UIElements/Input';
 import Button from '../../UIElements/Button';
 import Banner from '../../Components/Banner';
 import UserInfo from '../../Components/UserInfo';
 import Comments from '../../Components/Comments';
 
-const Article = () => (
+import BUTTON_TYPE from '../../configs/buttons';
+
+const Article = ({ articlesList, comments }) => (
   <div className={classes.Article}>
-    <Banner />
+    <Banner userName={articlesList[0].userName} title={articlesList[0].title} date={articlesList[0].date} />
     <Content>
       <div className={classes.articleContent}>
-        <p>fsdfk ;lkj fsdfewf hoiurtret oituertjfdg</p>
+        <p>{articlesList[0].text}</p>
         <hr />
       </div>
       <div className={classes.articleActions}>
-        <UserInfo userName="userName" title="title" date="May 24, 2021" />
-        <Button btnType="Secondary-outline" type="button">Edit Article</Button>
-        <Button btnType="Danger-outline" type="button">Delete Article</Button>
+        <UserInfo userName={articlesList[0].userName} title={articlesList[0].title} date={articlesList[0].date} />
+        <Button btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit Article</Button>
+        <Button btnType={BUTTON_TYPE.DANGER_OUTLINE}>Delete Article</Button>
       </div>
       <Form>
-        <Input inputType="textareaElement" rows="8" name="texarea" placeholder="Write a comment..." />
-        <Button btnType="Primary" type="button">Post Comment</Button>
+        <TextArea rows="8" name="texarea" placeholder="Write a comment..." />
+        <Button btnType={BUTTON_TYPE.PRIMARY} type="button">Post Comment</Button>
       </Form>
-      <Comments />
+      <Comments {...{ comments }} />
     </Content>
   </div>
 );
+
+Article.defaultProps = {
+  comments: [],
+};
+
+Article.propTypes = {
+  articlesList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  comments: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default Article;

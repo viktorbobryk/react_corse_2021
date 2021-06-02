@@ -1,5 +1,4 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import classes from './ArticlePreview.module.css';
@@ -7,14 +6,21 @@ import UserInfo from '../UserInfo';
 import Button from '../../UIElements/Button';
 import Tag from '../../UIElements/Tag';
 
+import BUTTON_TYPE from '../../configs/buttons';
+
 const ArticlePreview = ({
   likes, text, userName, title, date,
 }) => (
 
   <div className={classes.ArticlePreview}>
-    <UserInfo userName={userName} title={title} date={date} text={text} showInfo />
+    <UserInfo
+      {...{
+        userName, title, date, text,
+      }}
+      showInfo
+    />
     <div className={classes.rightSide}>
-      <Button btnType="Like">{likes}</Button>
+      <Button btnType={BUTTON_TYPE.LIKE}>{likes}</Button>
       <div>
         <Tag tagType="liteTag">some tag</Tag>
       </div>

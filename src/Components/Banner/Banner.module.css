@@ -1,8 +1,8 @@
 .Banner{
     display: flex;
     flex-wrap: wrap;
-    color: #fff;
-    background: #333;
+    color: var(--white);
+    background: var(--dark-grey);
     padding: 10px 30px;
     margin-bottom: 20px;
 }

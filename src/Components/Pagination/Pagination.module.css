@@ -7,12 +7,12 @@
 .Pagination li{
     list-style-type: none;
     display: inline-block;
-    border: 1px solid #bbb;
+    border: 1px solid var(--grey);
     margin-left: 5px;
     padding: 5px 10px;
-    color:  #5CB85C;
+    color: var(--green);
 }
 .Pagination li:hover{
-    background-color: #eceeef;
+    background-color: var(--light-grey);
     cursor: pointer;
 }
