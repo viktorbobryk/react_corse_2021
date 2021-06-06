@@ -29,6 +29,14 @@ Home.defaultProps = {
 Home.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
   tags: PropTypes.arrayOf(PropTypes.string),
-  articlesList: PropTypes.arrayOf(PropTypes.object),
+  articlesList: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.string,
+    email: PropTypes.string,
+    id: PropTypes.string,
+    likes: PropTypes.number,
+    text: PropTypes.string,
+    title: PropTypes.string,
+    userName: PropTypes.string,
+  })),
 };
 export default Home;

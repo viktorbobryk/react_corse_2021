@@ -7,7 +7,7 @@ const Content = ({ children }) => (
   <div className={classes.Content}>{children}</div>
 );
 Content.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default Content;

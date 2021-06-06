@@ -3,23 +3,14 @@ import PropTypes from 'prop-types';
 
 import classes from './Form.module.css';
 
-const Form = ({ children, formTitle, text }) => (
+const Form = ({ children }) => (
   <form className={classes.Form}>
-    <h2>{formTitle}</h2>
-    <span>{text}</span>
     {children}
   </form>
 );
 
-Form.defaultProps = {
-  formTitle: '',
-  text: '',
-};
-
 Form.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.object).isRequired,
-  formTitle: PropTypes.string,
-  text: PropTypes.string,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default Form;

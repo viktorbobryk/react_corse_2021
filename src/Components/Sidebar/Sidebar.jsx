@@ -6,7 +6,7 @@ import Tags from '../Tags';
 
 const Sidebar = ({ tags }) => (
   <div className={classes.Sidebar}>
-    <Tags {...{ tags }} tagType="darkTag" />
+    <Tags {...{ tags }} />
   </div>
 );
 

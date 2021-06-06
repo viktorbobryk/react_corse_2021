@@ -2,15 +2,15 @@ import React from 'react';
 
 import classes from './Settings.module.css';
 import Form from '../../Components/Form';
-import Input from '../../UIElements/Input';
-import TextArea from '../../UIElements/TextArea';
-import Button from '../../UIElements/Button';
-
-import BUTTON_TYPE from '../../configs/buttons';
+import FormHeader from '../../Components/Form/FormHeader';
+import {
+  Input, TextArea, Button, BUTTON_TYPE,
+} from '../../UIElements';
 
 const Settings = () => (
   <div className={classes.Settings}>
-    <Form formTitle="Your Settings">
+    <FormHeader>Your Settings</FormHeader>
+    <Form>
       <Input type="text" name="url" placeholder="URL of profile picture" />
       <Input type="text" name="userName" placeholder="userName" />
       <TextArea rows="8" name="textarea" placeholder="Short bio about you" />

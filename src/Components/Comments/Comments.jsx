@@ -17,7 +17,12 @@ Comments.defaultProps = {
 };
 
 Comments.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.object),
+  comments: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.string,
+    id: PropTypes.string,
+    text: PropTypes.string,
+    userName: PropTypes.string,
+  })),
 };
 
 export default Comments;

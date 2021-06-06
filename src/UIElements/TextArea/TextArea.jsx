@@ -15,7 +15,7 @@ const TextArea = ({
 );
 
 TextArea.defaultProps = {
-  rows: '',
+  rows: '2',
 };
 
 TextArea.propTypes = {

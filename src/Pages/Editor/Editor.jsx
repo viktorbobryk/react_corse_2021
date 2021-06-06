@@ -2,11 +2,9 @@ import React from 'react';
 
 import classes from './Editor.module.css';
 import Form from '../../Components/Form';
-import Input from '../../UIElements/Input';
-import TextArea from '../../UIElements/TextArea';
-import Button from '../../UIElements/Button';
-
-import BUTTON_TYPE from '../../configs/buttons';
+import {
+  Input, TextArea, Button, BUTTON_TYPE,
+} from '../../UIElements';
 
 const Editor = () => (
   <div className={classes.Editor}>

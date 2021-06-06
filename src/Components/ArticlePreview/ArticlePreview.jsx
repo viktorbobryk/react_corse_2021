@@ -3,26 +3,27 @@ import PropTypes from 'prop-types';
 
 import classes from './ArticlePreview.module.css';
 import UserInfo from '../UserInfo';
-import Button from '../../UIElements/Button';
-import Tag from '../../UIElements/Tag';
-
-import BUTTON_TYPE from '../../configs/buttons';
+import {
+  Tag, TAG_TYPE, Button, BUTTON_TYPE,
+} from '../../UIElements';
 
 const ArticlePreview = ({
   likes, text, userName, title, date,
 }) => (
 
   <div className={classes.ArticlePreview}>
-    <UserInfo
-      {...{
-        userName, title, date, text,
-      }}
-      showInfo
-    />
+    <div className="leftSide">
+      <UserInfo
+        {...{ userName, date }}
+      />
+      <h2>{title}</h2>
+      <p>{text}</p>
+      <Button btnType={BUTTON_TYPE.SIMPLE}>Read more ...</Button>
+    </div>
     <div className={classes.rightSide}>
       <Button btnType={BUTTON_TYPE.LIKE}>{likes}</Button>
       <div>
-        <Tag tagType="liteTag">some tag</Tag>
+        <Tag tagType={TAG_TYPE.LIGHT_TAG}>some tag</Tag>
       </div>
     </div>
   </div>

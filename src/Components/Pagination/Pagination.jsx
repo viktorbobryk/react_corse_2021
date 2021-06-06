@@ -12,6 +12,14 @@ const Pagination = ({ articleList }) => (
 );
 
 Pagination.propTypes = {
-  articleList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  articleList: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.string,
+    email: PropTypes.string,
+    id: PropTypes.string,
+    likes: PropTypes.number,
+    text: PropTypes.string,
+    title: PropTypes.string,
+    userName: PropTypes.string,
+  })).isRequired,
 };
 export default Pagination;

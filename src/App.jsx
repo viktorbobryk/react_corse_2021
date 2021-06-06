@@ -36,7 +36,7 @@ class App extends Component {
         <Settings />
         <SignIn />
         <SignUp />
-        <Article {...{ articlesList, comments }} />
+        <Article {...{ comments }} article={articlesList[0]} />
         <Profile {...{ articlesList }} />
       </Layout>
     );

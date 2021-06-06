@@ -25,7 +25,15 @@ Articles.defaultProps = {
 };
 
 Articles.propTypes = {
-  articlesList: PropTypes.arrayOf(PropTypes.object),
+  articlesList: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.string,
+    email: PropTypes.string,
+    id: PropTypes.string,
+    likes: PropTypes.number,
+    text: PropTypes.string,
+    title: PropTypes.string,
+    userName: PropTypes.string,
+  })),
 };
 
 export default Articles;
