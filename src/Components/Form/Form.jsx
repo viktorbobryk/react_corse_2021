@@ -1,15 +1,14 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import classes from './Form.module.css';
 
-const Form = ({ children, formTitle = null, text = null }) => (
-  <div className={classes.Form}>
+const Form = ({ children, formTitle, text }) => (
+  <form className={classes.Form}>
     <h2>{formTitle}</h2>
     <span>{text}</span>
     {children}
-  </div>
+  </form>
 );
 
 Form.defaultProps = {

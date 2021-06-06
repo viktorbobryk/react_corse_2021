@@ -1,18 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Pagination.module.css';
 
-const buttons = [];
-
-for (let i = 0; i < 20; i += 1) {
-  buttons.push(<li key={i}>{i}</li>);
-}
-const Pagination = () => (
+const Pagination = ({ articleList }) => (
   <div className={classes.Pagination}>
     <ul>
-      {buttons }
+      {articleList.map((article, i) => (<li key={article.id}>{i + 1}</li>)) }
     </ul>
   </div>
 );
 
+Pagination.propTypes = {
+  articleList: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 export default Pagination;

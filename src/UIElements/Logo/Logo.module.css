@@ -1,6 +1,6 @@
 .Logo{
     text-decoration: none;
-    color: #5CB85C;
+    color: var(--green);
     font-size: 20px;
     font-weight: bold;
 }

@@ -9,9 +9,9 @@
     display: inline-block;
     margin-left: 5px;
     padding: 5px 10px;
-    color: rgba(0, 0, 0, 0.4);
+    color: var(--dark-grey);
 }
 .Tabs li:hover{
-    color: rgba(0, 0, 0, 0.9);
+    color: var(--black);
     cursor: pointer;
 }

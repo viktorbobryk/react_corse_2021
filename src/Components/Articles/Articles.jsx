@@ -1,15 +1,13 @@
 import React from 'react';
-
-import articles from '../../articles';
+import PropTypes from 'prop-types';
 
 import classes from './Articles.module.css';
 import ArticlePreview from '../ArticlePreview';
 
-const Articles = () => (
+const Articles = ({ articlesList }) => (
   <div className={classes.Articles}>
-
     {/* in the future we will get the name of the active tab from parent component through props and we will filter the array of articles */}
-    {articles.map((article) => (
+    {articlesList.map((article) => (
       <ArticlePreview
         key={article.id}
         likes={article.likes}
@@ -21,5 +19,13 @@ const Articles = () => (
     ))}
   </div>
 );
+
+Articles.defaultProps = {
+  articlesList: [],
+};
+
+Articles.propTypes = {
+  articlesList: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default Articles;

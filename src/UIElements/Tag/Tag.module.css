@@ -10,15 +10,15 @@
 }
 
 .darkTag{
-    background-color: #818a91;
-    color: white;
+    background-color: var(--tag-bg);
+    color: var(--white);
 }
 .darkTag:hover{
-    background-color: #687077;
+    background-color: var(--tag-dark-bg);
 }
 
 .liteTag{
-    background-color: #fff;
-    border: 1px solid #ddd;
-    color: #ddd;
+    background-color: var(--white);
+    border: 1px solid var(--grey);
+    color: var(--grey);
 }

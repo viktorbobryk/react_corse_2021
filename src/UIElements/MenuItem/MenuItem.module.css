@@ -1,12 +1,13 @@
 .MenuItem{
     display: inline-block;
     text-transform: capitalize;
-    color: rgba(0, 0, 0, 0.4);
+    color: var(--dark-grey);
     margin-left: 10px;
     list-style-type: none;
 }
 .MenuItem:hover{
-    color: rgba(0, 0, 0, 0.9);
+    color: var(--black);
+    cursor: pointer;
 }
 
 .article::before {

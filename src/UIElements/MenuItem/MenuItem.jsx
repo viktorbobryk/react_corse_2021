@@ -1,11 +1,10 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import classes from './MenuItem.module.css';
 
 const MenuItem = ({ children, itemType }) => (
-  <li className={[classes.MenuItem, classes[itemType]].join(' ')}>{children}</li>
+  <li className={`${classes.MenuItem} ${classes[itemType]}`}>{children}</li>
 );
 
 MenuItem.defaultProps = {

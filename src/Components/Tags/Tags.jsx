@@ -1,26 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Tags.module.css';
 import Tag from '../../UIElements/Tag';
 
-const Tags = () => (
+const Tags = ({ tags, tagType }) => (
 
   <div className={classes.Tags}>
     <p>Popular Tags</p>
-    <div>
-      <Tag tagType="darkTag">test</Tag>
-      <Tag tagType="darkTag">test2</Tag>
-      <Tag tagType="darkTag">test3</Tag>
-      <Tag tagType="darkTag">test4</Tag>
-      <Tag tagType="darkTag">test5</Tag>
-      <Tag tagType="darkTag">test6</Tag>
-      <Tag tagType="darkTag">test7</Tag>
-      <Tag tagType="darkTag">test8</Tag>
-      <Tag tagType="darkTag">test9</Tag>
-      <Tag tagType="darkTag">test10</Tag>
-      <Tag tagType="darkTag">test11</Tag>
-    </div>
+    <ul>
+      {tags.map((tag, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Tag key={index} tagType={tagType}>{tag}</Tag>
+      ))}
+    </ul>
   </div>
 );
+
+Tags.defaultProps = {
+  tags: [],
+  tagType: '',
+};
+
+Tags.propTypes = {
+  tags: PropTypes.arrayOf(PropTypes.string),
+  tagType: PropTypes.string,
+};
 
 export default Tags;

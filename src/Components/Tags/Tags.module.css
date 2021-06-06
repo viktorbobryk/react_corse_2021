@@ -1,5 +1,9 @@
 .Tags{
     padding: 5px 10px 10px 10px;
-    background: #f3f3f3;
+    background: var(--light-grey);
     border-radius: 4px;
+}
+
+.Tags ul{
+    margin-left: 0;
 }
