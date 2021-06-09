@@ -8,7 +8,7 @@ import {
 } from '../../UIElements';
 
 const ArticlePreview = ({
-  likes, text, userName, title, date,
+  likes, text, userName, title, date, tagList,
 }) => (
 
   <div className={classes.ArticlePreview}>
@@ -23,7 +23,9 @@ const ArticlePreview = ({
     <div className={classes.rightSide}>
       <Button btnType={BUTTON_TYPE.LIKE}>{likes}</Button>
       <div>
-        <Tag tagType={TAG_TYPE.LIGHT_TAG}>some tag</Tag>
+        {tagList.map((tag) => (
+          <Tag tagType={TAG_TYPE.LIGHT_TAG} key={tag}>{tag}</Tag>
+        ))}
       </div>
     </div>
   </div>
@@ -35,6 +37,7 @@ ArticlePreview.propTypes = {
   userName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  tagList: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default ArticlePreview;
