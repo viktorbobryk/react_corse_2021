@@ -7,18 +7,19 @@ import Tabs from '../../Components/Tabs';
 import Articles from '../../Components/Articles';
 import Content from '../../Components/Content';
 import Pagination from '../../Components/Pagination';
+import Loader from '../../UIElements/Loader';
 
 const Home = ({
-  tags, tabs, articlesList, articlesCount, articlesPerPage, getArticles, showTagsTab, hideTagsTab,
+  tags, tabs, articlesList, articlesCount, articlesPerPage, getPaginatedArticles, showTagsTab, hideTagsTab, isLoading,
 }) => (
   <div className={classes.HomePage}>
     <Content>
       <Tabs {...{ tabs, hideTagsTab }} />
-      <Articles {...{ articlesList }} />
+      {isLoading ? <Loader /> : <Articles {...{ articlesList }} /> }
     </Content>
     <Sidebar {...{ tags, showTagsTab }} />
     <Pagination {...{
-      articlesList, articlesCount, articlesPerPage, getArticles,
+      articlesCount, articlesPerPage, getPaginatedArticles,
     }}
     />
   </div>
@@ -29,6 +30,7 @@ Home.defaultProps = {
   tags: [],
   articlesCount: 1,
   articlesPerPage: 1,
+  isLoading: false,
 };
 
 Home.propTypes = {
@@ -36,9 +38,10 @@ Home.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),
   articlesCount: PropTypes.number,
   articlesPerPage: PropTypes.number,
-  getArticles: PropTypes.func.isRequired,
+  getPaginatedArticles: PropTypes.func.isRequired,
   showTagsTab: PropTypes.func.isRequired,
   hideTagsTab: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
   articlesList: PropTypes.arrayOf(PropTypes.shape({
     author: PropTypes.shape({
       bio: PropTypes.string,

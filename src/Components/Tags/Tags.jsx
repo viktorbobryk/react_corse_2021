@@ -8,10 +8,9 @@ const Tags = ({ tags, showTagsTab }) => (
 
   <div className={classes.Tags}>
     <p>Popular Tags</p>
-    <ul className={classes.tagList}>
-      {tags.map((tag, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Tag key={index} tagType={TAG_TYPE.DARK_TAG} showTagsTab={showTagsTab}>{tag}</Tag>
+    <ul>
+      {tags.map((tag) => (
+        <Tag key={tag} tagType={TAG_TYPE.DARK_TAG} showTagsTab={showTagsTab}>{tag}</Tag>
       ))}
     </ul>
   </div>

@@ -94,5 +94,11 @@
     border-color: var(--red);
 }
 .Simple{
-
+ border: none;
+ background-color: var(--transparent);
+ color: var(--grey);
+ font-weight: bold;
+}
+.Simple:hover{
+    color: var(--dark-grey);
 }
