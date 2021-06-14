@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import classes from './Tags.module.css';
 import { Tag, TAG_TYPE } from '../../UIElements';
 
-const Tags = ({ tags, showTagsTab }) => (
+const Tags = ({ tags, onTagClick }) => (
 
   <div className={classes.Tags}>
     <p>Popular Tags</p>
     <ul>
       {tags.map((tag) => (
-        <Tag key={tag} tagType={TAG_TYPE.DARK_TAG} showTagsTab={showTagsTab}>{tag}</Tag>
+        <Tag key={tag} tagType={TAG_TYPE.DARK_TAG} onTagClick={onTagClick}>{tag}</Tag>
       ))}
     </ul>
   </div>
@@ -22,7 +22,7 @@ Tags.defaultProps = {
 
 Tags.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),
-  showTagsTab: PropTypes.func.isRequired,
+  onTagClick: PropTypes.func.isRequired,
 };
 
 export default Tags;
