@@ -2,14 +2,15 @@ import React from 'react';
 
 import classes from './SignUp.module.css';
 import Form from '../../Components/Form';
-import Input from '../../UIElements/Input';
-import Button from '../../UIElements/Button';
-
-import BUTTON_TYPE from '../../configs/buttons';
+import { Input, Button, BUTTON_TYPE } from '../../UIElements';
+import FormHeader from '../../Components/Form/FormHeader';
+import FormText from '../../Components/Form/FormText/FormText';
 
 const SignUp = () => (
   <div className={classes.SignUp}>
-    <Form formTitle="Sign Up" text="Have an account?">
+    <FormHeader>Sign Up</FormHeader>
+    <FormText>Have an account?</FormText>
+    <Form>
       <Input name="username" type="text" placeholder="Username" />
       <Input name="email" type="email" placeholder="Email" />
       <Input name="password" type="password" placeholder="Password" />

@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import classes from './Banner.module.css';
+import classes from './ArticleBanner.module.css';
 import UserInfo from '../UserInfo';
-import Button from '../../UIElements/Button';
+import { Button, BUTTON_TYPE } from '../../UIElements';
 
-import BUTTON_TYPE from '../../configs/buttons';
-
-const Banner = ({
+const ArticleBanner = ({
   text, userName, title, date,
 }) => (
   <div className={classes.Banner}>
@@ -22,15 +20,15 @@ const Banner = ({
 
 );
 
-Banner.defaultProps = {
+ArticleBanner.defaultProps = {
   text: '',
 };
 
-Banner.propTypes = {
+ArticleBanner.propTypes = {
   userName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   text: PropTypes.string,
 };
 
-export default Banner;
+export default ArticleBanner;

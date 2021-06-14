@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './Profile.module.css';
-import Button from '../../UIElements/Button';
+import { Button, BUTTON_TYPE } from '../../UIElements';
 import Tabs from '../../Components/Tabs';
 import Articles from '../../Components/Articles';
-
-import BUTTON_TYPE from '../../configs/buttons';
 
 import avatar from '../../assets/images/smiley-cyrus.jpg';
 
@@ -30,7 +28,15 @@ Profile.defaultProps = {
 };
 
 Profile.propTypes = {
-  articlesList: PropTypes.arrayOf(PropTypes.object),
+  articlesList: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.string,
+    email: PropTypes.string,
+    id: PropTypes.string,
+    likes: PropTypes.number,
+    text: PropTypes.string,
+    title: PropTypes.string,
+    userName: PropTypes.string,
+  })),
 };
 
 export default Profile;

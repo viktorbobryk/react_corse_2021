@@ -1,19 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import classes from './Header.module.css';
-import Logo from '../../UIElements/Logo';
+import { Logo } from '../../UIElements';
 import Menu from '../Menu';
+import data from '../../data';
 
-const Header = ({ menuItems }) => (
+const Header = () => (
   <div className={classes.Header}>
     <Logo />
-    <Menu {...{ menuItems }} />
+    <Menu menuItems={data.menuItems} />
   </div>
 );
-
-Header.propTypes = {
-  menuItems: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
 
 export default Header;

@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 import classes from './Comment.module.css';
 import UserInfo from '../UserInfo';
-import Button from '../../UIElements/Button';
-
-import BUTTON_TYPE from '../../configs/buttons';
+import { Button, BUTTON_TYPE } from '../../UIElements';
 
 const Comment = ({ userName, date, text }) => (
   <div className={classes.Comment}>

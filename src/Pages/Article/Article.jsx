@@ -4,24 +4,21 @@ import PropTypes from 'prop-types';
 import classes from './Article.module.css';
 import Content from '../../Components/Content';
 import Form from '../../Components/Form';
-import TextArea from '../../UIElements/Input';
-import Button from '../../UIElements/Button';
-import Banner from '../../Components/Banner';
+import { TextArea, Button, BUTTON_TYPE } from '../../UIElements';
+import ArticleBanner from '../../Components/ArticleBanner';
 import UserInfo from '../../Components/UserInfo';
 import Comments from '../../Components/Comments';
 
-import BUTTON_TYPE from '../../configs/buttons';
-
-const Article = ({ articlesList, comments }) => (
+const Article = ({ article, comments }) => (
   <div className={classes.Article}>
-    <Banner userName={articlesList[0].userName} title={articlesList[0].title} date={articlesList[0].date} />
+    <ArticleBanner userName={article.userName} title={article.title} date={article.date} />
     <Content>
       <div className={classes.articleContent}>
-        <p>{articlesList[0].text}</p>
+        <p>{article.text}</p>
         <hr />
       </div>
       <div className={classes.articleActions}>
-        <UserInfo userName={articlesList[0].userName} title={articlesList[0].title} date={articlesList[0].date} />
+        <UserInfo userName={article.userName} title={article.title} date={article.date} />
         <Button btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit Article</Button>
         <Button btnType={BUTTON_TYPE.DANGER_OUTLINE}>Delete Article</Button>
       </div>
@@ -39,8 +36,21 @@ Article.defaultProps = {
 };
 
 Article.propTypes = {
-  articlesList: PropTypes.arrayOf(PropTypes.object).isRequired,
-  comments: PropTypes.arrayOf(PropTypes.object),
+  article: PropTypes.shape({
+    date: PropTypes.string,
+    email: PropTypes.string,
+    id: PropTypes.string,
+    likes: PropTypes.number,
+    text: PropTypes.string,
+    title: PropTypes.string,
+    userName: PropTypes.string,
+  }).isRequired,
+  comments: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.string,
+    id: PropTypes.string,
+    text: PropTypes.string,
+    userName: PropTypes.string,
+  })),
 };
 
 export default Article;

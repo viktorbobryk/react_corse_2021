@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import classes from './Sidebar.module.css';
 import Tags from '../Tags';
 
-const Sidebar = ({ tags }) => (
+const Sidebar = ({ tags, onTagClick }) => (
   <div className={classes.Sidebar}>
-    <Tags {...{ tags }} tagType="darkTag" />
+    <Tags {...{ tags, onTagClick }} />
   </div>
 );
 
@@ -16,6 +16,7 @@ Sidebar.defaultProps = {
 
 Sidebar.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),
+  onTagClick: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

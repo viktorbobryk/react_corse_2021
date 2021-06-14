@@ -11,6 +11,7 @@
 
 .Like {
     border: 2px solid var(--green);
+    max-width: 60px;
     color: var(--green);
     border-radius: 5px;
     text-align: right;
@@ -93,5 +94,11 @@
     border-color: var(--red);
 }
 .Simple{
-
+ border: none;
+ background-color: var(--transparent);
+ color: var(--grey);
+ font-weight: bold;
+}
+.Simple:hover{
+    color: var(--dark-grey);
 }

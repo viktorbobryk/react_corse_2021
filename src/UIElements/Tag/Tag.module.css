@@ -17,7 +17,7 @@
     background-color: var(--tag-dark-bg);
 }
 
-.liteTag{
+.lightTag{
     background-color: var(--white);
     border: 1px solid var(--grey);
     color: var(--grey);

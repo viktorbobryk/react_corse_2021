@@ -2,16 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './Tags.module.css';
-import Tag from '../../UIElements/Tag';
+import { Tag, TAG_TYPE } from '../../UIElements';
 
-const Tags = ({ tags, tagType }) => (
+const Tags = ({ tags, onTagClick }) => (
 
   <div className={classes.Tags}>
     <p>Popular Tags</p>
     <ul>
-      {tags.map((tag, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Tag key={index} tagType={tagType}>{tag}</Tag>
+      {tags.map((tag) => (
+        <Tag key={tag} tagType={TAG_TYPE.DARK_TAG} onTagClick={onTagClick}>{tag}</Tag>
       ))}
     </ul>
   </div>
@@ -19,12 +18,11 @@ const Tags = ({ tags, tagType }) => (
 
 Tags.defaultProps = {
   tags: [],
-  tagType: '',
 };
 
 Tags.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),
-  tagType: PropTypes.string,
+  onTagClick: PropTypes.func.isRequired,
 };
 
 export default Tags;
