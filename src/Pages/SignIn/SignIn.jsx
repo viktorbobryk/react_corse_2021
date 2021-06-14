@@ -1,20 +1,13 @@
 import React from 'react';
 
 import classes from './SignIn.module.css';
-import Form from '../../Components/Form';
-import FormHeader from '../../Components/Form/FormHeader';
-import FormText from '../../Components/Form/FormText/FormText';
-import { Input, Button, BUTTON_TYPE } from '../../UIElements';
+import SignInForm from './SignInForm/SignInForm';
 
 const SignIn = () => (
   <div className={classes.SignIn}>
-    <FormHeader>Sign In</FormHeader>
-    <FormText>Need an account?</FormText>
-    <Form>
-      <Input name="email" type="email" placeholder="Email" />
-      <Input name="password" type="password" placeholder="Password" />
-      <Button btnType={BUTTON_TYPE.PRIMARY}>Sign in</Button>
-    </Form>
+    <h1>Sign In</h1>
+    <p>Need an account?</p>
+    <SignInForm />
   </div>
 );
 

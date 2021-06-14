@@ -3,4 +3,8 @@
    flex-direction: column;
    width: 50%;
    margin: 0 auto;
+   text-align: center;
+}
+.SignIn p {
+   color: var(--green);
 }
