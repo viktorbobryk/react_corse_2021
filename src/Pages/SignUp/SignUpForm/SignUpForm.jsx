@@ -37,7 +37,7 @@ const SignUpForm = () => (
           <Field name="email" type="email" placeholder="Email" />
           {errors.password && touched.password ? <div className={classes.error}>{errors.password}</div> : null}
           <Field name="password" type="password" placeholder="Password" />
-          <Button type="submit" btnType={BUTTON_TYPE.PRIMARY}>Sign In</Button>
+          <Button type="submit" btnType={BUTTON_TYPE.PRIMARY}>Sign Up</Button>
         </Form>
       )}
     </Formik>
