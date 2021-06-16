@@ -21,10 +21,11 @@ const SignInForm = () => (
         password: '',
       }}
       validationSchema={SignInSchema}
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         // same shape as initial values
         // eslint-disable-next-line no-console
         console.log(values);
+        resetForm();
       }}
     >
       {({ errors, touched }) => (

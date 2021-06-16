@@ -22,10 +22,11 @@ const EditorForm = () => (
         tags: '',
       }}
       validationSchema={EditorSchema}
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         // same shape as initial values
         // eslint-disable-next-line no-console
         console.log(values);
+        resetForm();
       }}
     >
       {({ errors, touched }) => (
