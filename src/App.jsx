@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Layout from './hoc/Layout';
 import Home from './Pages/Home';
-// import Editor from './Pages/Editor/Editor';
+import Editor from './Pages/Editor/Editor';
 import SignIn from './Pages/SignIn/SignIn';
 // import Settings from './Pages/Settings/Settings';
 import SignUp from './Pages/SignUp/SignUp';
@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <Layout>
         <Home />
-        {/* <Editor /> */}
+        <Editor />
         {/* <Settings /> */}
         <SignIn />
         <SignUp />

@@ -1,0 +1,18 @@
+.EditorForm input, .EditorForm textarea{
+    display: block;
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 5px 8px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: var(--grey);
+    background-color: var(--white);
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.error{
+    color: var(--red)
+}
