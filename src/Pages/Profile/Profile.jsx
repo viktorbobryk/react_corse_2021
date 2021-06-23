@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 import classes from './Profile.module.css';
 import { Button, BUTTON_TYPE } from '../../UIElements';
@@ -10,18 +11,23 @@ import avatar from '../../assets/images/smiley-cyrus.jpg';
 
 const tabs = ['My Articles', 'Favorited Articles'];
 
-const Profile = ({ articlesList }) => (
-  <div className={classes.Profile}>
-    <div className={classes.user}>
-      {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-      <img src={avatar} alt="user image" />
-      <h2>{articlesList[0].userName}</h2>
-      <Button btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit profile Settings</Button>
+const Profile = ({ articlesList }) => {
+  const history = useHistory();
+  const navigateTo = () => history.push('/settings');
+  return (
+    <div className={classes.Profile}>
+      <div className={classes.user}>
+        {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+        <img src={avatar} alt="user image" />
+        {/* <h2>{articlesList[0].author.userName}</h2> */}
+        {/* eslint-disable-next-line no-console,max-len,react/prop-types,no-undef */}
+        <Button onclick={navigateTo} btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit profile Settings</Button>
+      </div>
+      <Tabs tabs={tabs} />
+      <Articles {...{ articlesList }} />
     </div>
-    <Tabs tabs={tabs} />
-    <Articles {...{ articlesList }} />
-  </div>
-);
+  );
+};
 
 Profile.defaultProps = {
   articlesList: [],
@@ -35,7 +41,7 @@ Profile.propTypes = {
     likes: PropTypes.number,
     text: PropTypes.string,
     title: PropTypes.string,
-    userName: PropTypes.string,
+    author: PropTypes.objectOf(PropTypes.any),
   })),
 };
 

@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import classes from './Button.module.css';
 
 const Button = ({
-  children, btnType, type,
+  children, btnType, type, onclick,
 }) => (
   // eslint-disable-next-line react/button-has-type
-  <button className={`${classes.Button} ${classes[btnType]}`} type={type}>
+  <button onClick={onclick} className={`${classes.Button} ${classes[btnType]}`} type={type}>
     {children}
   </button>
 );
@@ -15,6 +15,7 @@ const Button = ({
 Button.defaultProps = {
   children: '',
   type: 'button',
+  onclick: () => {},
 };
 
 Button.propTypes = {
@@ -24,6 +25,7 @@ Button.propTypes = {
   ]),
   btnType: PropTypes.string.isRequired,
   type: PropTypes.string,
+  onclick: PropTypes.func,
 };
 
 export const BUTTON_TYPE = {

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import classes from './Layout.module.css';
 import Header from '../../Components/Header';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, isLoggedIn }) => (
   <div className={classes.Layout}>
-    <Header />
+    <Header {...{ isLoggedIn }} />
     <main>
       {children}
     </main>
@@ -14,7 +14,10 @@ const Layout = ({ children }) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.node.isRequired,
+  isLoggedIn: PropTypes.shape({
+    isLoggedIn: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 export default Layout;

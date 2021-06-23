@@ -9,7 +9,7 @@ const ArticleBanner = ({
   text, userName, title, date,
 }) => (
   <div className={classes.Banner}>
-    <h2>Banner Title</h2>
+    <h2>{title}</h2>
     <UserInfo {...{
       userName, title, date, text,
     }}
