@@ -6,6 +6,7 @@ import classes from './Profile.module.css';
 import { Button, BUTTON_TYPE } from '../../UIElements';
 import Tabs from '../../Components/Tabs';
 import Articles from '../../Components/Articles';
+import ROUTES from '../../routes/routesConstants';
 
 import avatar from '../../assets/images/smiley-cyrus.jpg';
 
@@ -13,7 +14,7 @@ const tabs = ['My Articles', 'Favorited Articles'];
 
 const Profile = ({ articlesList }) => {
   const history = useHistory();
-  const navigateTo = () => history.push('/settings');
+  const navigateToSettings = () => history.push(ROUTES.SETTINGS);
   return (
     <div className={classes.Profile}>
       <div className={classes.user}>
@@ -21,7 +22,7 @@ const Profile = ({ articlesList }) => {
         <img src={avatar} alt="user image" />
         {/* <h2>{articlesList[0].author.userName}</h2> */}
         {/* eslint-disable-next-line no-console,max-len,react/prop-types,no-undef */}
-        <Button onclick={navigateTo} btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit profile Settings</Button>
+        <Button onclick={navigateToSettings} btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit profile Settings</Button>
       </div>
       <Tabs tabs={tabs} />
       <Articles {...{ articlesList }} />

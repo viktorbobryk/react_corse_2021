@@ -1,6 +1,6 @@
 export default {
   HOME: '/',
-  ARTICLE: '/article',
+  ARTICLE: '/article/:id',
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
   EDITOR: '/editor',

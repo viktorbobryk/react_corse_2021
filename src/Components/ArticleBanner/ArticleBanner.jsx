@@ -22,11 +22,13 @@ const ArticleBanner = ({
 
 ArticleBanner.defaultProps = {
   text: '',
+  userName: '',
+  title: '',
 };
 
 ArticleBanner.propTypes = {
-  userName: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  userName: PropTypes.string,
+  title: PropTypes.string,
   date: PropTypes.string.isRequired,
   text: PropTypes.string,
 };

@@ -3,7 +3,7 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 
 import classes from './EditorForm.module.css';
-import { Button, BUTTON_TYPE } from '../../UIElements';
+import { Button, BUTTON_TYPE } from '../../../UIElements';
 
 const EditorSchema = Yup.object().shape({
   title: Yup.string().required('title can\'t be blank'),

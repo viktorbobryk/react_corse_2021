@@ -15,8 +15,12 @@ const UserInfo = ({ userName, date }) => (
   </div>
 );
 
+UserInfo.defaultProps = {
+  userName: '',
+};
+
 UserInfo.propTypes = {
-  userName: PropTypes.string.isRequired,
+  userName: PropTypes.string,
   date: PropTypes.string.isRequired,
 };
 

@@ -3,7 +3,7 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 
 import classes from './SignUpForm.module.css';
-import { Button, BUTTON_TYPE } from '../../UIElements';
+import { Button, BUTTON_TYPE } from '../../../UIElements';
 
 const SignUpSchema = Yup.object().shape({
   username: Yup.string().required('Required'),

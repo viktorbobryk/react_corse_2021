@@ -3,7 +3,7 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 
 import classes from './SignInForm.module.css';
-import { Button, BUTTON_TYPE } from '../../UIElements';
+import { Button, BUTTON_TYPE } from '../../../UIElements';
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address!').required('Required'),
