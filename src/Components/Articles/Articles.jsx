@@ -8,7 +8,8 @@ const Articles = ({ articlesList }) => (
   <div className={classes.Articles}>
     {articlesList.map((article) => (
       <ArticlePreview
-        key={article.createdAt}
+        key={article.slug}
+        id={article.slug}
         likes={article.favoritesCount}
         userName={article.author.username}
         title={article.title}

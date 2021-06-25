@@ -7,7 +7,8 @@ import Comment from '../Comment';
 const Comments = ({ comments }) => (
   <div className={classes.Comments}>
     {comments.map((comment) => (
-      <Comment key={comment.id} userName={comment.userName} date={comment.date} text={comment.text} />
+      // eslint-disable-next-line max-len
+      <Comment key={comment.id} userName={comment.author.username} date={new Date(comment.updatedAt).toDateString()} text={comment.body} />
     ))}
   </div>
 );

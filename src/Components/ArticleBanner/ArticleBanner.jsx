@@ -9,7 +9,7 @@ const ArticleBanner = ({
   text, userName, title, date,
 }) => (
   <div className={classes.Banner}>
-    <h2>Banner Title</h2>
+    <h2>{title}</h2>
     <UserInfo {...{
       userName, title, date, text,
     }}
@@ -22,11 +22,13 @@ const ArticleBanner = ({
 
 ArticleBanner.defaultProps = {
   text: '',
+  userName: '',
+  title: '',
 };
 
 ArticleBanner.propTypes = {
-  userName: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  userName: PropTypes.string,
+  title: PropTypes.string,
   date: PropTypes.string.isRequired,
   text: PropTypes.string,
 };

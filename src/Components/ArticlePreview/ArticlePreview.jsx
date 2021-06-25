@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
+import Routes from '../../routes/routesConstants';
 import classes from './ArticlePreview.module.css';
 import UserInfo from '../UserInfo';
 import {
@@ -8,7 +9,7 @@ import {
 } from '../../UIElements';
 
 const ArticlePreview = ({
-  likes, text, userName, title, date, tagList,
+  likes, text, userName, title, date, tagList, id,
 }) => (
 
   <div className={classes.ArticlePreview}>
@@ -16,9 +17,11 @@ const ArticlePreview = ({
       <UserInfo
         {...{ userName, date }}
       />
-      <h2>{title}</h2>
-      <p>{text}</p>
-      <Button btnType={BUTTON_TYPE.SIMPLE}>Read more ...</Button>
+      <Link className={classes.link} to={`${Routes.ARTICLE}/${id}`}>
+        <h2>{title}</h2>
+        <p>{text}</p>
+        <Button btnType={BUTTON_TYPE.SIMPLE}>Read more ...</Button>
+      </Link>
     </div>
     <div className={classes.rightSide}>
       <Button btnType={BUTTON_TYPE.LIKE}>{likes}</Button>
@@ -38,6 +41,7 @@ ArticlePreview.propTypes = {
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   tagList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default ArticlePreview;

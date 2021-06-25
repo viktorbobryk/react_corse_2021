@@ -1,10 +1,7 @@
-.SettingsForm{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 0 auto;
+.SignUpForm{
+
 }
-.SettingsForm input, .SettingsForm textarea{
+.SignUpForm input{
     display: block;
     width: 100%;
     margin-bottom: 25px;
@@ -19,10 +16,16 @@
     border-radius: 5px;
     box-sizing: border-box;
 }
-.SettingsForm hr{
-    display: block;
-    width: 100%;
-}
 .error{
     color: var(--red)
+}
+.SignUp{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+.SignUp p {
+    color: var(--green);
 }

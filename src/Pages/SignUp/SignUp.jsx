@@ -1,13 +1,11 @@
 import React from 'react';
-
 import classes from './SignUp.module.css';
-import SignUpForm from './SignUpForm/SignUpForm';
+import SignUpForm from '../../Components/Forms/SignUpForm';
 
 const SignUp = () => (
-  <div className={classes.SignUp}>
-    <h1>Sign Up</h1>
-    <p>Have an account?</p>
+  <div className={classes.SingUp}>
     <SignUpForm />
   </div>
 );
+
 export default SignUp;

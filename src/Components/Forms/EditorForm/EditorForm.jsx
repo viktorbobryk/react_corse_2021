@@ -31,13 +31,13 @@ const EditorForm = () => (
     >
       {({ errors, touched }) => (
         <Form>
-          {errors.title && touched.title ? <div className={classes.error}>{errors.title}</div> : null}
+          {errors.title && touched.title && <div className={classes.error}>{errors.title}</div>}
           <Field name="title" type="text" placeholder="Article Title" />
-          {errors.about && touched.about ? <div className={classes.error}>{errors.about}</div> : null}
+          {errors.about && touched.about && <div className={classes.error}>{errors.about}</div>}
           <Field name="about" type="text" placeholder="What's this article about?" />
-          {errors.article && touched.article ? <div className={classes.error}>{errors.article}</div> : null}
+          {errors.article && touched.article && <div className={classes.error}>{errors.article}</div>}
           <Field name="article" as="textarea" rows="10" placeholder="Write your article (in markdown)" />
-          {errors.tags && touched.tags ? <div className={classes.error}>{errors.tags}</div> : null}
+          {errors.tags && touched.tags && <div className={classes.error}>{errors.tags}</div>}
           <Field name="tags" type="text" placeholder="Enter tags" />
           <Button type="submit" btnType={BUTTON_TYPE.PRIMARY}>Publish Article</Button>
         </Form>

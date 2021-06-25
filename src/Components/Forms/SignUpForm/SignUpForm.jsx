@@ -31,15 +31,19 @@ const SignUpForm = () => (
       }}
     >
       {({ errors, touched }) => (
-        <Form>
-          {errors.username && touched.username ? <div className={classes.error}>{errors.username}</div> : null}
-          <Field name="username" type="text" placeholder="Username" />
-          {errors.email && touched.email ? <div className={classes.error}>{errors.email}</div> : null}
-          <Field name="email" type="email" placeholder="Email" />
-          {errors.password && touched.password ? <div className={classes.error}>{errors.password}</div> : null}
-          <Field name="password" type="password" placeholder="Password" />
-          <Button type="submit" btnType={BUTTON_TYPE.PRIMARY}>Sign Up</Button>
-        </Form>
+        <>
+          <h1>Sign Up</h1>
+          <p>Have an account?</p>
+          <Form>
+            {errors.username && touched.username ? <div className={classes.error}>{errors.username}</div> : null}
+            <Field name="username" type="text" placeholder="Username" />
+            {errors.email && touched.email ? <div className={classes.error}>{errors.email}</div> : null}
+            <Field name="email" type="email" placeholder="Email" />
+            {errors.password && touched.password ? <div className={classes.error}>{errors.password}</div> : null}
+            <Field name="password" type="password" placeholder="Password" />
+            <Button type="submit" btnType={BUTTON_TYPE.PRIMARY}>Sign Up</Button>
+          </Form>
+        </>
       )}
     </Formik>
   </div>

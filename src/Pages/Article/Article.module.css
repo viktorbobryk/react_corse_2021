@@ -3,10 +3,6 @@
     flex-direction: column;
     justify-content: flex-start;
 }
-.Article form {
-    width: 50%;
-    margin: 0 auto;
-}
 .articleContent p{
     margin-bottom: 40px;
 }

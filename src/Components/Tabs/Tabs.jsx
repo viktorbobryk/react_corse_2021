@@ -17,11 +17,12 @@ const Tabs = ({ tabs, hideTagsTab, activeTab }) => (
 
 Tabs.defaultProps = {
   activeTab: null,
+  hideTagsTab: () => {},
 };
 
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
-  hideTagsTab: PropTypes.func.isRequired,
+  hideTagsTab: PropTypes.func,
   activeTab: PropTypes.string,
 };
 

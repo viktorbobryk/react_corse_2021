@@ -1,10 +1,5 @@
-.SignUp{
-    display: flex;
-    flex-direction: column;
+.SingUp{
     width: 50%;
-    margin: 0 auto 40px;
+    margin: 0 auto;
     text-align: center;
-}
-.SignUp p {
-    color: var(--green);
 }

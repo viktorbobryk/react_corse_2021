@@ -6,7 +6,6 @@ import classes from './Tag.module.css';
 const Tag = ({
   tagType, onTagClick, children,
 }) => (
-  // in the future I will replace span with a Link from Router
   // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
   <span className={`${classes.Tag} ${classes[tagType]}`} onClick={() => onTagClick(children)}>
     {children}

@@ -9,7 +9,9 @@
     color: var(--black);
     cursor: pointer;
 }
-
+.MenuItem a{
+    text-decoration: none;
+}
 .article::before {
     font-family: "Font Awesome 5 Free", serif; font-weight: 900; content: "\f044";
 }
