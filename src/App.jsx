@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import Routes from './routes';
 import { Provider as AuthProvider } from './contexts/Auth';
 
@@ -10,11 +12,13 @@ const isLogged = true;
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <AuthProvider value={isLogged}>
-          <Routes />
-        </AuthProvider>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <AuthProvider value={isLogged}>
+            <Routes />
+          </AuthProvider>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }

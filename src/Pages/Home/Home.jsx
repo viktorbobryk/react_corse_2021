@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import classes from './Home.module.css';
 import Sidebar from '../../Components/Sidebar';
@@ -9,6 +10,7 @@ import Pagination from '../../Components/Pagination';
 import { Loader } from '../../UIElements';
 import axios from '../../axios/axios';
 import data from '../../data';
+import stupidAction from '../../redux/modules/stupid/stupidActions';
 
 class Home extends Component {
   constructor(props) {
@@ -133,6 +135,8 @@ class Home extends Component {
     return (
       <div className={classes.HomePage}>
         <Content>
+          {/* eslint-disable-next-line react/button-has-type,react/destructuring-assignment,react/prop-types */}
+          <button onClick={this.props.onStupid}>toggle stupid</button>
           <Tabs {...{ tabs, activeTab }} hideTagsTab={this.hideTagsTab} />
           {isLoading ? <Loader /> : <Articles articlesList={articlesList} /> }
         </Content>
@@ -147,4 +151,12 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  stupid: state.stupid.stupid,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onStupid: () => dispatch(stupidAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
