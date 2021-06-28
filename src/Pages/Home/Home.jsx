@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import classes from './Home.module.css';
 import Sidebar from '../../Components/Sidebar';
@@ -8,101 +9,60 @@ import Articles from '../../Components/Articles';
 import Content from '../../Components/Content';
 import Pagination from '../../Components/Pagination';
 import { Loader } from '../../UIElements';
-import axios from '../../axios/axios';
 import data from '../../data';
-import stupidAction from '../../redux/modules/stupid/stupidActions';
+import { fetchArticles } from '../../redux/modules/articles';
+import { fetchTags } from '../../redux/modules/tags';
+import { paginatedArticles } from '../../redux/modules/articles/articlesActions';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      articlesList: [],
-      articlesPerPage: 10,
-      articlesCount: 0,
-      tags: [],
       tabs: data.tabs,
       activeTab: data.tabs[1],
       selectedTag: null,
-      pagination: {
-        offset: 0,
-        limit: 10,
-      },
       isLoading: false,
     };
     this.interval = null;
-
-    this.getArticles = this.getArticles.bind(this);
-    this.getPaginatedArticles = this.getPaginatedArticles.bind(this);
     this.showTagsTab = this.showTagsTab.bind(this);
     this.hideTagsTab = this.hideTagsTab.bind(this);
   }
 
   componentDidMount() {
+    const { onFetchArticles, onFetchTags } = this.props;
     this.toggleLoading();
-    this.getArticles();
-    this.getTags();
+    onFetchArticles();
+    onFetchTags();
     this.toggleLoading();
     this.interval = setInterval(async () => {
       this.toggleLoading();
-      this.getArticles();
-      this.getTags();
+      onFetchArticles();
+      onFetchTags();
       this.toggleLoading();
     }, 600000);
   }
 
   async componentDidUpdate(prevProps, prevState) {
+    const { pagination, onFetchArticles } = this.props;
     const {
-      pagination, selectedTag, activeTab,
+      selectedTag, activeTab,
     } = this.state;
 
-    const tag = selectedTag ? `&tag=${selectedTag}` : '';
-
-    if (prevState.pagination.offset !== pagination.offset || prevState.activeTab !== activeTab) {
+    if (prevState.selectedTag !== selectedTag) {
       this.toggleLoading();
-      const newArticles = await axios.get(`/articles?limit=${pagination.limit}&offset=${pagination.offset}${tag}`);
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        articlesList: newArticles.data.articles,
-      });
+      console.log('prevState.selectedTag !== selectedTag');
+      onFetchArticles(selectedTag);
       this.toggleLoading();
-    } else if (prevState.selectedTag !== selectedTag) {
+    } else if (prevProps.pagination.offset !== pagination.offset || prevState.activeTab !== activeTab) {
       this.toggleLoading();
-      // eslint-disable-next-line max-len
-      const newArticles = await axios.get(`/articles?limit=${pagination.limit}&offset=${pagination.offset}&tag=${selectedTag}`);
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        articlesList: newArticles.data.articles,
-      });
+      console.log('prevProps.pagination.offset !== pagination.offset || prevState.activeTab !== activeTab');
+      onFetchArticles();
       this.toggleLoading();
     }
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
-  }
-
-  async getTags() {
-    const newTags = await axios.get('/tags');
-    this.setState({
-      tags: newTags.data.tags,
-    });
-  }
-
-  async getArticles() {
-    const { pagination } = this.state;
-    const response = await axios.get(`/articles?limit=${pagination.limit}&offset=${pagination.offset}`);
-    this.setState({
-      articlesList: response.data.articles,
-      articlesCount: response.data.articlesCount,
-    });
-  }
-
-  async getPaginatedArticles(value) {
-    const { pagination } = this.state;
-    const newOffset = value * pagination.limit - pagination.limit;
-    this.setState({
-      pagination: { limit: pagination.limit, offset: newOffset },
-    });
   }
 
   async showTagsTab(value) {
@@ -130,33 +90,54 @@ class Home extends Component {
 
   render() {
     const {
-      articlesList, isLoading, articlesCount, articlesPerPage, tags, tabs, activeTab,
+      articlesList, tagsList, articlesCount, articlesPerPage, onPaginateArticles,
+    } = this.props;
+    const {
+      isLoading, tabs, activeTab,
     } = this.state;
     return (
       <div className={classes.HomePage}>
         <Content>
-          {/* eslint-disable-next-line react/button-has-type,react/destructuring-assignment,react/prop-types */}
-          <button onClick={this.props.onStupid}>toggle stupid</button>
           <Tabs {...{ tabs, activeTab }} hideTagsTab={this.hideTagsTab} />
           {isLoading ? <Loader /> : <Articles articlesList={articlesList} /> }
         </Content>
-        <Sidebar tags={tags} onTagClick={this.showTagsTab} />
+        <Sidebar tags={tagsList} onTagClick={this.showTagsTab} />
         <Pagination
           articlesCount={articlesCount}
           articlesPerPage={articlesPerPage}
-          onPageChanged={this.getPaginatedArticles}
+          onPageChanged={onPaginateArticles}
         />
       </div>
     );
   }
 }
 
+Home.propTypes = {
+  pagination: PropTypes.shape({
+    offset: PropTypes.number,
+    limit: PropTypes.number,
+  }).isRequired,
+  articlesList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  articlesCount: PropTypes.number.isRequired,
+  articlesPerPage: PropTypes.number.isRequired,
+  tagsList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onFetchArticles: PropTypes.func.isRequired,
+  onFetchTags: PropTypes.func.isRequired,
+  onPaginateArticles: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => ({
-  stupid: state.stupid.stupid,
+  pagination: state.articles.pagination,
+  articlesList: state.articles.articlesList,
+  articlesPerPage: state.articles.articlesPerPage,
+  articlesCount: state.articles.articlesCount,
+  tagsList: state.tags.tagsList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onStupid: () => dispatch(stupidAction()),
+  onFetchArticles: (tag) => dispatch(fetchArticles(tag)),
+  onFetchTags: () => dispatch(fetchTags()),
+  onPaginateArticles: (value) => dispatch(paginatedArticles(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

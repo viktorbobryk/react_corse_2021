@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from '../../axios/axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import classes from './Article.module.css';
 import Content from '../../Components/Content';
@@ -8,37 +9,22 @@ import { TextArea, Button, BUTTON_TYPE } from '../../UIElements';
 import ArticleBanner from '../../Components/ArticleBanner';
 import UserInfo from '../../Components/UserInfo';
 import Comments from '../../Components/Comments';
+import { fetchComments } from '../../redux/modules/comments';
+import { fetchSelectedArticle } from '../../redux/modules/articles/articlesActions';
 
 class Article extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      article: {},
-      author: {},
-      comments: [],
-    };
-  }
-
   async componentDidMount() {
-    // eslint-disable-next-line react/prop-types
-    const { location } = this.props;
-    // eslint-disable-next-line no-unused-vars,react/prop-types,react/destructuring-assignment
-    const newArticle = await axios.get(`/articles/${location.pathname.split('/').pop()}`);
-    // eslint-disable-next-line react/prop-types
-    const newComments = await axios.get(`/articles/${location.pathname.split('/').pop()}/comments`);
-    this.setState({
-      article: newArticle.data.article,
-      author: newArticle.data.article.author,
-      comments: newComments.data.comments,
-    });
+    const { location, onFetchComments, onFetchSelectedArticle } = this.props;
+    onFetchComments(`/articles/${location.pathname.split('/').pop()}/comments`);
+    onFetchSelectedArticle(`/articles/${location.pathname.split('/').pop()}`);
   }
 
   render() {
-    const { article, author, comments } = this.state;
+    const { comments, article } = this.props;
     return (
       <div className={classes.Article}>
         {/* eslint-disable-next-line max-len */}
-        <ArticleBanner userName={author.username} title={article.title} date={new Date(article.updatedAt).toDateString()} />
+        <ArticleBanner userName={article.author.username} title={article.title} date={new Date(article.updatedAt).toDateString()} />
         <Content>
           <div className={classes.articleContent}>
             <p>{article.body}</p>
@@ -46,7 +32,7 @@ class Article extends React.Component {
           </div>
           <div className={classes.articleActions}>
             {/* eslint-disable-next-line max-len */}
-            <UserInfo userName={author.username} title={article.title} date={new Date(article.updatedAt).toDateString()} />
+            <UserInfo userName={article.author.username} title={article.title} date={new Date(article.updatedAt).toDateString()} />
             <Button btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit Article</Button>
             <Button btnType={BUTTON_TYPE.DANGER_OUTLINE}>Delete Article</Button>
           </div>
@@ -60,5 +46,38 @@ class Article extends React.Component {
     );
   }
 }
+Article.propTypes = {
+  comments: PropTypes.arrayOf(PropTypes.object).isRequired,
+  article: PropTypes.shape({
+    // eslint-disable-next-line react/forbid-prop-types
+    author: PropTypes.object,
+    title: PropTypes.string,
+    updatedAt: PropTypes.string,
+    body: PropTypes.string,
+    createdAt: PropTypes.string,
+    description: PropTypes.string,
+    favorited: PropTypes.bool,
+    favoritesCount: PropTypes.number,
+    slug: PropTypes.string,
+  }).isRequired,
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+    key: PropTypes.string,
+    pathname: PropTypes.string,
+    search: PropTypes.string,
+  }).isRequired,
+  onFetchComments: PropTypes.func.isRequired,
+  onFetchSelectedArticle: PropTypes.func.isRequired,
+};
 
-export default Article;
+const mapStateToProps = (state) => ({
+  comments: state.comments.commentsList,
+  article: state.articles.selectedArticle,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onFetchComments: (path) => dispatch(fetchComments(path)),
+  onFetchSelectedArticle: (path) => dispatch(fetchSelectedArticle(path)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Article);

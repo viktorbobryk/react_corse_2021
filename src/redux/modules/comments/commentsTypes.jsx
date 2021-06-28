@@ -1,0 +1,2 @@
+export const SET_COMMENTS = 'SET_COMMENTS';
+export const FETCH_COMMENTS = 'FETCH_COMMENTS';

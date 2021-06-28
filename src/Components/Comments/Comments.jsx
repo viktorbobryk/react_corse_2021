@@ -20,7 +20,7 @@ Comments.defaultProps = {
 Comments.propTypes = {
   comments: PropTypes.arrayOf(PropTypes.shape({
     date: PropTypes.string,
-    id: PropTypes.string,
+    id: PropTypes.number,
     text: PropTypes.string,
     userName: PropTypes.string,
   })),
