@@ -20,11 +20,11 @@ class Article extends React.Component {
   }
 
   render() {
-    const { comments, article } = this.props;
+    const { comments, article, author } = this.props;
     return (
       <div className={classes.Article}>
         {/* eslint-disable-next-line max-len */}
-        <ArticleBanner userName={article.author.username} title={article.title} date={new Date(article.updatedAt).toDateString()} />
+        <ArticleBanner userName={author} title={article.title} date={new Date(article.updatedAt).toDateString()} />
         <Content>
           <div className={classes.articleContent}>
             <p>{article.body}</p>
@@ -32,7 +32,7 @@ class Article extends React.Component {
           </div>
           <div className={classes.articleActions}>
             {/* eslint-disable-next-line max-len */}
-            <UserInfo userName={article.author.username} title={article.title} date={new Date(article.updatedAt).toDateString()} />
+            <UserInfo userName={author} title={article.title} date={new Date(article.updatedAt).toDateString()} />
             <Button btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit Article</Button>
             <Button btnType={BUTTON_TYPE.DANGER_OUTLINE}>Delete Article</Button>
           </div>
@@ -68,11 +68,13 @@ Article.propTypes = {
   }).isRequired,
   onFetchComments: PropTypes.func.isRequired,
   onFetchSelectedArticle: PropTypes.func.isRequired,
+  author: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   comments: state.comments.commentsList,
   article: state.articles.selectedArticle,
+  author: state.articles.selectedArticleAuthor,
 });
 
 const mapDispatchToProps = (dispatch) => ({
