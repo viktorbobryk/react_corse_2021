@@ -9,6 +9,16 @@
         "code": 120,
         "ignoreComments": true
       }
-    ]
+    ],
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "line": {
+          "markers": ["/"]
+        }
+      }
+    ],
+    "import/prefer-default-export": "off"
   }
 }
