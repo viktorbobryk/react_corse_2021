@@ -6,8 +6,8 @@ export const setComments = (comments) => ({
   payload: comments,
 });
 
-export const fetchComments = (path) => (dispatch) => {
-  axios.get(path)
+export const fetchComments = (id) => (dispatch) => {
+  axios.get(`/articles/${id}/comments`)
     .then((comments) => {
       dispatch(setComments(comments.data.comments));
     });

@@ -9,17 +9,10 @@ export const setArticles = (articles) => ({
 
 export const fetchArticles = (tag = '') => (dispatch) => {
   const { limit, offset } = store.getState().articles.pagination;
-  if (tag) {
-    axios.get(`articles?limit=${limit}&offset=${offset}&tag=${tag}`)
-      .then((articles) => {
-        dispatch(setArticles(articles.data));
-      });
-  } else {
-    axios.get(`articles?limit=${limit}&offset=${offset}`)
-      .then((articles) => {
-        dispatch(setArticles(articles.data));
-      });
-  }
+  axios.get(tag ? `articles?limit=${limit}&offset=${offset}&tag=${tag}` : `articles?limit=${limit}&offset=${offset}`)
+    .then((articles) => {
+      dispatch(setArticles(articles.data));
+    });
 };
 
 export const setSelectedArticle = (article) => ({
@@ -27,18 +20,14 @@ export const setSelectedArticle = (article) => ({
   payload: article,
 });
 
-export const fetchSelectedArticle = (path) => (dispatch) => {
-  axios.get(path)
+export const fetchSelectedArticle = (id) => (dispatch) => {
+  axios.get(`/articles/${id}`)
     .then((article) => {
       dispatch(setSelectedArticle(article.data));
     });
 };
 
-export const paginatedArticles = (value) => {
-  const { limit } = store.getState().articles.pagination;
-  const newOffset = value * limit - limit;
-  return {
-    type: actionTypes.PAGINATED_ARTICLES,
-    payload: newOffset,
-  };
-};
+export const paginatedArticles = (value) => ({
+  type: actionTypes.PAGINATED_ARTICLES,
+  payload: value,
+});

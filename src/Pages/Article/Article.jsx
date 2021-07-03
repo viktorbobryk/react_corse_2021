@@ -15,8 +15,8 @@ import { fetchSelectedArticle } from '../../redux/modules/articles/articlesActio
 class Article extends React.Component {
   async componentDidMount() {
     const { location, onFetchComments, onFetchSelectedArticle } = this.props;
-    onFetchComments(`/articles/${location.pathname.split('/').pop()}/comments`);
-    onFetchSelectedArticle(`/articles/${location.pathname.split('/').pop()}`);
+    onFetchComments(`${location.pathname.split('/').pop()}`);
+    onFetchSelectedArticle(`${location.pathname.split('/').pop()}`);
   }
 
   render() {

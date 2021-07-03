@@ -12,13 +12,27 @@ const initialState = {
   selectedArticleAuthor: '',
 };
 
-export const articlesReducer = (state = initialState, action) => {
+const articlesReducer = (state = initialState, action) => {
   switch (action.type) {
-    // eslint-disable-next-line max-len
-    case SET_ARTICLES: return { ...state, articlesList: action.payload.articles, articlesCount: action.payload.articlesCount };
-    case PAGINATED_ARTICLES: return { ...state, pagination: { limit: state.pagination.limit, offset: action.payload } };
-    // eslint-disable-next-line max-len
-    case SET_SELECTED_ARTICLE: return { ...state, selectedArticle: action.payload.article, selectedArticleAuthor: action.payload.article.author.username };
+    case SET_ARTICLES: return {
+      ...state,
+      articlesList: action.payload.articles,
+      articlesCount: action.payload.articlesCount,
+    };
+
+    case PAGINATED_ARTICLES: return {
+      ...state,
+      pagination: {
+        limit: state.pagination.limit,
+        offset: action.payload * state.pagination.limit - state.pagination.limit,
+      },
+    };
+    case SET_SELECTED_ARTICLE: return {
+      ...state,
+      selectedArticle: action.payload.article,
+      selectedArticleAuthor: action.payload.article.author.username,
+    };
     default: return state;
   }
 };
+export default articlesReducer;
