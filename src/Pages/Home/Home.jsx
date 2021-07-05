@@ -1,116 +1,87 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import classes from './Home.module.css';
-import Sidebar from '../../Components/Sidebar';
-import Tabs from '../../Components/Tabs';
-import Articles from '../../Components/Articles';
-import Content from '../../Components/Content';
-import Pagination from '../../Components/Pagination';
-import { Loader } from '../../UIElements';
 import data from '../../data';
+import Content from '../../Components/Content';
+import Tabs from '../../Components/Tabs';
+import { Loader } from '../../UIElements';
+import Articles from '../../Components/Articles';
+import Sidebar from '../../Components/Sidebar';
+import Pagination from '../../Components/Pagination';
 import { fetchArticles } from '../../redux/modules/articles';
 import { fetchTags } from '../../redux/modules/tags';
 import { paginatedArticles } from '../../redux/modules/articles/articlesActions';
+import { useTimer } from '../../custom-hooks/useTimer';
+import {
+  selectPagination,
+  selectArticlesList,
+  selectArticlesPerPage,
+  selectArticlesCount,
+  selectTagsList,
+} from '../../redux/selectors';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tabs: data.tabs,
-      activeTab: data.tabs[1],
-      selectedTag: null,
-      isLoading: false,
-    };
-    this.interval = null;
-    this.showTagsTab = this.showTagsTab.bind(this);
-    this.hideTagsTab = this.hideTagsTab.bind(this);
-  }
+const Home = ({
+  articlesList,
+  tagsList,
+  pagination,
+  articlesCount,
+  articlesPerPage,
+  onFetchArticles,
+  onFetchTags,
+  onPaginateArticles,
+}) => {
+  const [tabs, setTabs] = useState(() => data.tabs);
+  const [activeTab, setActiveTab] = useState(() => data.tabs[1]);
+  const [selectedTag, setSelectedTag] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  componentDidMount() {
-    const { onFetchArticles, onFetchTags } = this.props;
-    this.toggleLoading();
+  const showTagsTab = async (value) => {
+    setTabs([tabs[0], tabs[1], `# ${value}`]);
+    setActiveTab(value);
+    setSelectedTag(value);
+  };
+
+  const hideTagsTab = async (tab) => {
+    setTabs(data.tabs);
+    setActiveTab(tab);
+    setSelectedTag(null);
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
     onFetchArticles();
     onFetchTags();
-    this.toggleLoading();
-    this.interval = setInterval(async () => {
-      this.toggleLoading();
-      onFetchArticles();
-      onFetchTags();
-      this.toggleLoading();
-    }, 600000);
-  }
+    setIsLoading(false);
+  }, []);
 
-  async componentDidUpdate(prevProps, prevState) {
-    const { pagination, onFetchArticles } = this.props;
-    const {
-      selectedTag, activeTab,
-    } = this.state;
+  useTimer(onFetchArticles, 600000);
+  useTimer(onFetchTags, 600000);
 
-    if (prevState.selectedTag !== selectedTag) {
-      this.toggleLoading();
-      console.log('prevState.selectedTag !== selectedTag');
-      onFetchArticles(selectedTag);
-      this.toggleLoading();
-    } else if (prevProps.pagination.offset !== pagination.offset || prevState.activeTab !== activeTab) {
-      this.toggleLoading();
-      console.log('prevProps.pagination.offset !== pagination.offset || prevState.activeTab !== activeTab');
-      onFetchArticles();
-      this.toggleLoading();
-    }
-  }
+  useEffect(() => {
+    onFetchArticles(selectedTag);
+  }, [selectedTag]);
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+  useEffect(() => {
+    onFetchArticles();
+  }, [pagination.offset, activeTab]);
 
-  async showTagsTab(value) {
-    const { tabs } = this.state;
-    this.setState({
-      tabs: [tabs[0], tabs[1], `# ${value}`],
-      activeTab: value,
-      selectedTag: value,
-    });
-  }
-
-  async hideTagsTab(tab) {
-    this.setState({
-      tabs: data.tabs,
-      activeTab: tab,
-      selectedTag: null,
-    });
-  }
-
-  toggleLoading() {
-    this.setState((prevState) => ({
-      isLoading: !prevState.isLoading,
-    }));
-  }
-
-  render() {
-    const {
-      articlesList, tagsList, articlesCount, articlesPerPage, onPaginateArticles,
-    } = this.props;
-    const {
-      isLoading, tabs, activeTab,
-    } = this.state;
-    return (
-      <div className={classes.HomePage}>
-        <Content>
-          <Tabs {...{ tabs, activeTab }} hideTagsTab={this.hideTagsTab} />
-          {isLoading ? <Loader /> : <Articles articlesList={articlesList} /> }
-        </Content>
-        <Sidebar tags={tagsList} onTagClick={this.showTagsTab} />
-        <Pagination
-          articlesCount={articlesCount}
-          articlesPerPage={articlesPerPage}
-          onPageChanged={onPaginateArticles}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classes.HomePage}>
+      <Content>
+        <Tabs {...{ tabs, activeTab }} hideTagsTab={hideTagsTab} />
+        {isLoading ? <Loader /> : <Articles articlesList={articlesList} /> }
+      </Content>
+      <Sidebar tags={tagsList} onTagClick={showTagsTab} />
+      <Pagination
+        articlesCount={articlesCount}
+        articlesPerPage={articlesPerPage}
+        onPageChanged={onPaginateArticles}
+      />
+    </div>
+  );
+};
 
 Home.propTypes = {
   pagination: PropTypes.shape({
@@ -127,11 +98,11 @@ Home.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  pagination: state.articles.pagination,
-  articlesList: state.articles.articlesList,
-  articlesPerPage: state.articles.articlesPerPage,
-  articlesCount: state.articles.articlesCount,
-  tagsList: state.tags.tagsList,
+  pagination: selectPagination(state),
+  articlesList: selectArticlesList(state),
+  articlesPerPage: selectArticlesPerPage(state),
+  articlesCount: selectArticlesCount(state),
+  tagsList: selectTagsList(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

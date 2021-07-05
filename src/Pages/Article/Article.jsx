@@ -1,51 +1,56 @@
-import React from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 
-import classes from './Article.module.css';
-import Content from '../../Components/Content';
-import ArticleForm from '../../Components/Forms/ArticleForm';
-import { TextArea, Button, BUTTON_TYPE } from '../../UIElements';
-import ArticleBanner from '../../Components/ArticleBanner';
-import UserInfo from '../../Components/UserInfo';
-import Comments from '../../Components/Comments';
 import { fetchComments } from '../../redux/modules/comments';
-import { fetchSelectedArticle } from '../../redux/modules/articles/articlesActions';
+import { fetchSelectedArticle } from '../../redux/modules/articles';
+import classes from './Article.module.css';
+import ArticleBanner from '../../Components/ArticleBanner';
+import Content from '../../Components/Content';
+import UserInfo from '../../Components/UserInfo';
+import { Button, BUTTON_TYPE } from '../../UIElements';
+import ArticleForm from '../../Components/Forms/ArticleForm';
+import Comments from '../../Components/Comments';
+import { selectComments, selectArticle, selectAuthor } from '../../redux/selectors';
 
-class Article extends React.Component {
-  async componentDidMount() {
-    const { location, onFetchComments, onFetchSelectedArticle } = this.props;
+const Article = ({
+  comments, article, author, onFetchComments, onFetchSelectedArticle,
+}) => {
+  const location = useLocation();
+  useEffect(() => {
     onFetchComments(`${location.pathname.split('/').pop()}`);
     onFetchSelectedArticle(`${location.pathname.split('/').pop()}`);
-  }
+  }, []);
+  return (
+    <div className={classes.Article}>
+      <ArticleBanner
+        userName={author}
+        title={article.title}
+        date={new Date(article.updatedAt).toDateString()}
+      />
+      <Content>
+        <div className={classes.articleContent}>
+          <p>{article.body}</p>
+          <hr />
+        </div>
+        <div className={classes.articleActions}>
+          <UserInfo
+            userName={author}
+            title={article.title}
+            date={new Date(article.updatedAt).toDateString()}
+          />
+          <Button btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit Article</Button>
+          <Button btnType={BUTTON_TYPE.DANGER_OUTLINE}>Delete Article</Button>
+        </div>
+        <ArticleForm />
+        <Comments {...{ comments }} />
+      </Content>
+    </div>
+  );
+};
 
-  render() {
-    const { comments, article, author } = this.props;
-    return (
-      <div className={classes.Article}>
-        {/* eslint-disable-next-line max-len */}
-        <ArticleBanner userName={author} title={article.title} date={new Date(article.updatedAt).toDateString()} />
-        <Content>
-          <div className={classes.articleContent}>
-            <p>{article.body}</p>
-            <hr />
-          </div>
-          <div className={classes.articleActions}>
-            {/* eslint-disable-next-line max-len */}
-            <UserInfo userName={author} title={article.title} date={new Date(article.updatedAt).toDateString()} />
-            <Button btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit Article</Button>
-            <Button btnType={BUTTON_TYPE.DANGER_OUTLINE}>Delete Article</Button>
-          </div>
-          <ArticleForm>
-            <TextArea rows="8" name="texarea" placeholder="Write a comment..." />
-            <Button btnType={BUTTON_TYPE.PRIMARY} type="button">Post Comment</Button>
-          </ArticleForm>
-          <Comments {...{ comments }} />
-        </Content>
-      </div>
-    );
-  }
-}
 Article.propTypes = {
   comments: PropTypes.arrayOf(PropTypes.object).isRequired,
   article: PropTypes.shape({
@@ -72,9 +77,9 @@ Article.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  comments: state.comments.commentsList,
-  article: state.articles.selectedArticle,
-  author: state.articles.selectedArticleAuthor,
+  comments: selectComments(state),
+  article: selectArticle(state),
+  author: selectAuthor(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
