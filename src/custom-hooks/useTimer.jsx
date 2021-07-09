@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 export const useTimer = (callback, time) => {
+  const dispatch = useDispatch();
   let interval = null;
   useEffect(() => {
+    dispatch(callback());
     interval = setInterval(async () => {
-      // console.log('timer');
-      callback();
+      dispatch(callback());
     }, time);
     return () => {
-      // console.log('cleared');
       clearInterval(interval);
     };
   }, []);

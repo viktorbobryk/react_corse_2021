@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Routes from '../../routes/routesConstants';
+// import Routes from '../../routes/routesConstants';
 import classes from './ArticlePreview.module.css';
 import UserInfo from '../UserInfo';
 import {
@@ -17,7 +17,7 @@ const ArticlePreview = ({
       <UserInfo
         {...{ userName, date }}
       />
-      <Link className={classes.link} to={`${Routes.ARTICLE}/${id}`}>
+      <Link className={classes.link} to={`article/${id}`}>
         <h2>{title}</h2>
         <p>{text}</p>
         <Button btnType={BUTTON_TYPE.SIMPLE}>Read more ...</Button>

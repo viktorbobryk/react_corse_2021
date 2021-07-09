@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 
 import classes from './Home.module.css';
 import data from '../../data';
@@ -12,30 +11,21 @@ import Sidebar from '../../Components/Sidebar';
 import Pagination from '../../Components/Pagination';
 import { fetchArticles } from '../../redux/modules/articles';
 import { fetchTags } from '../../redux/modules/tags';
-import { paginatedArticles } from '../../redux/modules/articles/articlesActions';
 import { useTimer } from '../../custom-hooks/useTimer';
-import {
-  selectPagination,
-  selectArticlesList,
-  selectArticlesPerPage,
-  selectArticlesCount,
-  selectTagsList,
-} from '../../redux/selectors';
 
-const Home = ({
-  articlesList,
-  tagsList,
-  pagination,
-  articlesCount,
-  articlesPerPage,
-  onFetchArticles,
-  onFetchTags,
-  onPaginateArticles,
-}) => {
-  const [tabs, setTabs] = useState(() => data.tabs);
+const Home = () => {
+  const [tabs, setTabs] = useState(data.tabs);
   const [activeTab, setActiveTab] = useState(() => data.tabs[1]);
   const [selectedTag, setSelectedTag] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const articlesList = useSelector((state) => state.articles.articlesList);
+  const articlesCount = useSelector((state) => state.articles.articlesCount);
+  const articlesPerPage = useSelector((state) => state.articles.articlesPerPage);
+  const pagination = useSelector((state) => state.articles.pagination);
+  const tagsList = useSelector((state) => state.tags.tagsList);
+
+  const dispatch = useDispatch();
 
   const showTagsTab = async (value) => {
     setTabs([tabs[0], tabs[1], `# ${value}`]);
@@ -43,28 +33,23 @@ const Home = ({
     setSelectedTag(value);
   };
 
-  const hideTagsTab = async (tab) => {
+  const hideTagsTab = (tab) => {
     setTabs(data.tabs);
     setActiveTab(tab);
     setSelectedTag(null);
   };
 
+  useTimer(fetchArticles, 600000);
+  useTimer(fetchTags, 600000);
+
   useEffect(() => {
     setIsLoading(true);
-    onFetchArticles();
-    onFetchTags();
+    dispatch(fetchArticles(selectedTag));
     setIsLoading(false);
-  }, []);
-
-  useTimer(onFetchArticles, 600000);
-  useTimer(onFetchTags, 600000);
-
-  useEffect(() => {
-    onFetchArticles(selectedTag);
   }, [selectedTag]);
 
   useEffect(() => {
-    onFetchArticles();
+    dispatch(fetchArticles());
   }, [pagination.offset, activeTab]);
 
   return (
@@ -77,38 +62,9 @@ const Home = ({
       <Pagination
         articlesCount={articlesCount}
         articlesPerPage={articlesPerPage}
-        onPageChanged={onPaginateArticles}
       />
     </div>
   );
 };
 
-Home.propTypes = {
-  pagination: PropTypes.shape({
-    offset: PropTypes.number,
-    limit: PropTypes.number,
-  }).isRequired,
-  articlesList: PropTypes.arrayOf(PropTypes.object).isRequired,
-  articlesCount: PropTypes.number.isRequired,
-  articlesPerPage: PropTypes.number.isRequired,
-  tagsList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onFetchArticles: PropTypes.func.isRequired,
-  onFetchTags: PropTypes.func.isRequired,
-  onPaginateArticles: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  pagination: selectPagination(state),
-  articlesList: selectArticlesList(state),
-  articlesPerPage: selectArticlesPerPage(state),
-  articlesCount: selectArticlesCount(state),
-  tagsList: selectTagsList(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onFetchArticles: (tag) => dispatch(fetchArticles(tag)),
-  onFetchTags: () => dispatch(fetchTags()),
-  onPaginateArticles: (value) => dispatch(paginatedArticles(value)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

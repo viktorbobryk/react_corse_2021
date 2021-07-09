@@ -1,8 +1,6 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
 
 import { fetchComments } from '../../redux/modules/comments';
 import { fetchSelectedArticle } from '../../redux/modules/articles';
@@ -13,16 +11,18 @@ import UserInfo from '../../Components/UserInfo';
 import { Button, BUTTON_TYPE } from '../../UIElements';
 import ArticleForm from '../../Components/Forms/ArticleForm';
 import Comments from '../../Components/Comments';
-import { selectComments, selectArticle, selectAuthor } from '../../redux/selectors';
 
-const Article = ({
-  comments, article, author, onFetchComments, onFetchSelectedArticle,
-}) => {
-  const location = useLocation();
+const Article = ({ match }) => {
+  const dispatch = useDispatch();
+  const article = useSelector((state) => state.articles.selectedArticle);
+  const comments = useSelector((state) => state.comments.commentsList);
+  const author = useSelector((state) => state.articles.selectedArticleAuthor);
+
   useEffect(() => {
-    onFetchComments(`${location.pathname.split('/').pop()}`);
-    onFetchSelectedArticle(`${location.pathname.split('/').pop()}`);
+    dispatch(fetchComments(match.params.id));
+    dispatch(fetchSelectedArticle(match.params.id));
   }, []);
+
   return (
     <div className={classes.Article}>
       <ArticleBanner
@@ -52,39 +52,13 @@ const Article = ({
 };
 
 Article.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.object).isRequired,
-  article: PropTypes.shape({
+  match: PropTypes.shape({
+    isexact: PropTypes.bool,
     // eslint-disable-next-line react/forbid-prop-types
-    author: PropTypes.object,
-    title: PropTypes.string,
-    updatedAt: PropTypes.string,
-    body: PropTypes.string,
-    createdAt: PropTypes.string,
-    description: PropTypes.string,
-    favorited: PropTypes.bool,
-    favoritesCount: PropTypes.number,
-    slug: PropTypes.string,
+    params: PropTypes.object,
+    path: PropTypes.string,
+    url: PropTypes.string,
   }).isRequired,
-  location: PropTypes.shape({
-    hash: PropTypes.string,
-    key: PropTypes.string,
-    pathname: PropTypes.string,
-    search: PropTypes.string,
-  }).isRequired,
-  onFetchComments: PropTypes.func.isRequired,
-  onFetchSelectedArticle: PropTypes.func.isRequired,
-  author: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  comments: selectComments(state),
-  article: selectArticle(state),
-  author: selectAuthor(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onFetchComments: (path) => dispatch(fetchComments(path)),
-  onFetchSelectedArticle: (path) => dispatch(fetchSelectedArticle(path)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Article);
+export default Article;
