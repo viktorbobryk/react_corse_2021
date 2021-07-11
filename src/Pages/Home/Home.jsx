@@ -11,7 +11,7 @@ import Sidebar from '../../Components/Sidebar';
 import Pagination from '../../Components/Pagination';
 import { fetchArticles } from '../../redux/modules/articles';
 import { fetchTags } from '../../redux/modules/tags';
-import { useTimer } from '../../custom-hooks/useTimer';
+import { useTimer } from '../../utils/custom-hooks/useTimer';
 
 const Home = () => {
   const [tabs, setTabs] = useState(data.tabs);

@@ -1,5 +1,5 @@
 import * as actionTypes from './commentsTypes';
-import axios from '../../../axios/axios';
+import { makeRequest, urls } from '../../../utils/apiService';
 
 export const setComments = (comments) => ({
   type: actionTypes.SET_COMMENTS,
@@ -7,8 +7,8 @@ export const setComments = (comments) => ({
 });
 
 export const fetchComments = (id) => (dispatch) => {
-  axios.get(`/articles/${id}/comments`)
-    .then((comments) => {
-      dispatch(setComments(comments.data.comments));
+  makeRequest.get(urls.comments(id))
+    .then((data) => {
+      dispatch(setComments(data.comments));
     });
 };

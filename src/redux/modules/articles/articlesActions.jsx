@@ -1,6 +1,6 @@
 import * as actionTypes from './articlesTypes';
-import axios from '../../../axios/axios';
 import store from '../../store';
+import { makeRequest, urls } from '../../../utils/apiService';
 
 export const setArticles = (articles) => ({
   type: actionTypes.SET_ARTICLES,
@@ -9,9 +9,11 @@ export const setArticles = (articles) => ({
 
 export const fetchArticles = (tag = '') => (dispatch) => {
   const { limit, offset } = store.getState().articles.pagination;
-  axios.get(tag ? `articles?limit=${limit}&offset=${offset}&tag=${tag}` : `articles?limit=${limit}&offset=${offset}`)
-    .then((articles) => {
-      dispatch(setArticles(articles.data));
+  const queryTag = tag ? `&tag=${tag}` : '';
+
+  makeRequest.get(urls.articles(`?limit=${limit}&offset=${offset}&tag=${tag}${queryTag}`))
+    .then((data) => {
+      dispatch(setArticles(data));
     });
 };
 
@@ -21,9 +23,9 @@ export const setSelectedArticle = (article) => ({
 });
 
 export const fetchSelectedArticle = (id) => (dispatch) => {
-  axios.get(`/articles/${id}`)
-    .then((article) => {
-      dispatch(setSelectedArticle(article.data));
+  makeRequest.get(urls.articles(`/${id}`))
+    .then((data) => {
+      dispatch(setSelectedArticle(data));
     });
 };
 
