@@ -1,20 +1,27 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import classes from './Header.module.css';
 import { Logo } from '../../UIElements';
 import Menu from '../Menu';
 import data from '../../data';
+import { autoLogin } from '../../redux/modules/auth';
 
-// eslint-disable-next-line no-return-assign,react/prop-types
-const Header = ({ isLoggedIn }) => (
-  <div className={classes.Header}>
-    <Logo />
-    <Menu menuItems={isLoggedIn ? data.menuItemsOnlyLogged : data.menuItems} />
-  </div>
-);
+const Header = () => {
+  const isLoggedIn = useSelector((state) => state.auth.isToken);
+  const userData = useSelector((state) => state.auth.user);
+  const user = {
+    menuItemName: userData.username, itemType: 'simple', id: userData.id, to: `/${userData.username}`,
+  };
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(autoLogin());
+  }, []);
+  return (
+    <div className={classes.Header}>
+      <Logo />
+      <Menu menuItems={isLoggedIn ? [...data.menuItemsOnlyLogged, user] : data.menuItems} />
+    </div>
+  );
+};
 
-const mapStateToProps = (state) => ({
-  isLoggedIn: state.auth.isToken,
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;

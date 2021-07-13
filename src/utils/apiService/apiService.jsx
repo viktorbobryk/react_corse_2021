@@ -1,19 +1,27 @@
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-const makeRequest = (url, method = 'GET') => axios({
-  method,
+const get = (url) => axios({
+  method: 'GET',
   url,
-  headers: {},
+}).then((res) => {
+  if (res.status === 401) {
+    this.props.history.push('/home');
+  }
+  return res;
 })
-  .then((res) => {
-    if (res.status === 401) {
-      // do soome logic Redirect
-    }
-    return res;
-  })
   .then(({ data }) => data);
 
-const get = (url) => makeRequest(url);
-const post = (url, data) => makeRequest(url, 'POST', JSON.stringify(data));
+const post = (url, data) => axios({
+  method: 'POST',
+  url,
+  data,
+}).then((response) => response)
+  .catch((error) => {
+    console.log(error.response);
+  });
 
-export default { get, post };
+// const get = (url) => makeRequest(url);
+// const post = (url, data) => makeRequest(url, 'POST', data);
+
+export default withRouter({ get, post });

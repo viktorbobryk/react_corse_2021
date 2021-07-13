@@ -152,6 +152,6 @@ export default {
     tabs: ['Your Feed', 'Global Feed'],
     tags: ["test0", "test1", "test2", "test3", "test4", "tes5", "test6", "test7", "test8", "test9", "test10", "test11", "test12"],
     menuItems: [{menuItemName: "Home", itemType:"simple", id: "Home", to:"/"}, {menuItemName: "SignIn", itemType:"simple", id: "SignInForm", to:"/sign-in"}, {menuItemName: "SignUp", itemType:"simple", id: "SignUpForm", to:"/sign-up"}],
-    menuItemsOnlyLogged: [{menuItemName: "Home", itemType:"simple", id: "Home", to:"/"}, {menuItemName: "New Article", itemType:"article", id: "New Article", to:"/editor"}, {menuItemName: "Settings", itemType: "settings", id: "Settings", to:"/settings"}, {menuItemName: "User Name", itemType:"simple", id: "User Name", to:"/profile"}],
+    menuItemsOnlyLogged: [{menuItemName: "Home", itemType:"simple", id: "Home", to:"/"}, {menuItemName: "New Article", itemType:"article", id: "New Article", to:"/editor"}, {menuItemName: "Settings", itemType: "settings", id: "Settings", to:"/settings"}],
 };
 

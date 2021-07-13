@@ -6,4 +6,6 @@ export default {
   article: (id) => `${apiBase}${apiVersion}/articles/${id}`,
   tags: () => `${apiBase}${apiVersion}/tags`,
   comments: (id) => `${apiBase}${apiVersion}/articles/${id}/comments`,
+  registration: () => `${apiBase}${apiVersion}/users`,
+  login: () => `${apiBase}${apiVersion}/users/login`,
 };

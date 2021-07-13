@@ -1,2 +1,4 @@
 export { authReducer } from './authReducer';
-export { authActions } from './authActions';
+export {
+  registration, login, logout, autoLogin,
+} from './authActions';

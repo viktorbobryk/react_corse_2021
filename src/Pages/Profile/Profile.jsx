@@ -20,8 +20,6 @@ const Profile = ({ articlesList }) => {
       <div className={classes.user}>
         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
         <img src={avatar} alt="user image" />
-        {/* <h2>{articlesList[0].author.userName}</h2> */}
-        {/* eslint-disable-next-line no-console,max-len,react/prop-types,no-undef */}
         <Button onclick={navigateToSettings} btnType={BUTTON_TYPE.SECONDARY_OUTLINE}>Edit profile Settings</Button>
       </div>
       <Tabs tabs={tabs} />
