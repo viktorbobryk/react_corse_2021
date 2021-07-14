@@ -7,11 +7,26 @@ export const setArticles = (articles) => ({
   payload: articles,
 });
 
-export const fetchArticles = (tag = '') => (dispatch) => {
+export const fetchArticles = (options = '', username = '', tag = '', yourfeed = '') => (dispatch) => {
   const { limit, offset } = store.getState().articles.pagination;
+  const token = store.getState().auth.isToken;
   const queryTag = tag ? `&tag=${tag}` : '';
+  const queryOption = options ? `${options}=` : '';
+  const queryUserName = username ? `${username}&` : '';
+  const queryYourFeed = yourfeed ? `/${yourfeed}` : '';
 
-  makeRequest.get(urls.articles(`?limit=${limit}&offset=${offset}&tag=${tag}${queryTag}`))
+  const query = `${queryYourFeed}?${queryOption}${queryUserName}limit=${limit}&offset=${offset}${queryTag}`;
+
+  makeRequest.get(urls.articles(query), token)
+    .then((data) => {
+      dispatch(setArticles(data));
+    });
+};
+
+export const fetchMyArticles = (option = '', username = '') => (dispatch) => {
+  const { limit, offset } = store.getState().articles.pagination;
+
+  makeRequest.get(urls.articles(`?${option}${username}limit=${limit}&offset=${offset}`))
     .then((data) => {
       dispatch(setArticles(data));
     });
@@ -33,3 +48,13 @@ export const paginatedArticles = (value) => ({
   type: actionTypes.PAGINATED_ARTICLES,
   payload: value,
 });
+
+export const addNewArticle = (article, token) => () => {
+  makeRequest.post(urls.articles(), article, token)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error.response);
+    });
+};

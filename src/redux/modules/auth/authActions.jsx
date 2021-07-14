@@ -54,7 +54,6 @@ export const autoLogin = () => (dispatch) => {
   if (!token) {
     dispatch(logout());
   } else {
-    // eslint-disable-next-line no-undef
     dispatch(setToken(userData.token));
     dispatch(setUser(userData));
   }

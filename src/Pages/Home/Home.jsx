@@ -18,6 +18,7 @@ const Home = () => {
   const [activeTab, setActiveTab] = useState(() => data.tabs[1]);
   const [selectedTag, setSelectedTag] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [yourFeed, setYourFeed] = useState('');
 
   const articlesList = useSelector((state) => state.articles.articlesList);
   const articlesCount = useSelector((state) => state.articles.articlesCount);
@@ -39,23 +40,34 @@ const Home = () => {
     setSelectedTag(null);
   };
 
+  const activeTabHandler = (tab) => {
+    if (tab === tabs[0]) {
+      setYourFeed('feed');
+    } else if (tab === tabs[1]) {
+      setYourFeed('');
+    }
+    hideTagsTab(tab);
+  };
+
   useTimer(fetchArticles, 600000);
   useTimer(fetchTags, 600000);
 
   useEffect(() => {
+    console.log('[selectedTag]');
     setIsLoading(true);
-    dispatch(fetchArticles(selectedTag));
+    dispatch(fetchArticles('', '', selectedTag));
     setIsLoading(false);
   }, [selectedTag]);
 
   useEffect(() => {
-    dispatch(fetchArticles());
-  }, [pagination.offset, activeTab]);
+    console.log('[pagination.offset, activeTab]');
+    dispatch(fetchArticles('', '', '', yourFeed));
+  }, [pagination.offset, yourFeed]);
 
   return (
     <div className={classes.HomePage}>
       <Content>
-        <Tabs {...{ tabs, activeTab }} hideTagsTab={hideTagsTab} />
+        <Tabs {...{ tabs, activeTab }} onTabClick={activeTabHandler} />
         {isLoading ? <Loader /> : <Articles articlesList={articlesList} /> }
       </Content>
       <Sidebar tags={tagsList} onTagClick={showTagsTab} />
