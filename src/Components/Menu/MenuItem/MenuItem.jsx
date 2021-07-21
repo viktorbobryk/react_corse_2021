@@ -10,10 +10,11 @@ const MenuItem = ({ children, itemType, to }) => (
 
 MenuItem.defaultProps = {
   itemType: '',
+  children: '',
 };
 
 MenuItem.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.string,
   itemType: PropTypes.string,
   to: PropTypes.string.isRequired,
 };

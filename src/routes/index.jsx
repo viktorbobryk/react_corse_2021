@@ -23,8 +23,8 @@ const Routes = ({ isLoggedIn }) => (
       <Route path={ROUTES.SIGN_UP} component={withAuth(SignUp, !isLoggedIn)} />
       <Route path={ROUTES.EDITOR} component={withAuth(Editor, isLoggedIn)} />
       <Route path={ROUTES.SETTINGS} component={withAuth(Settings, isLoggedIn)} />
-      <Route path={ROUTES.PROFILE} component={withAuth(Profile, isLoggedIn)} />
       <Route path={ROUTES.ARTICLE} component={withAuth(Article, isLoggedIn)} />
+      <Route path={ROUTES.PROFILE} component={withAuth(Profile, isLoggedIn)} />
       <Route path="*" component={PageNotFound} />
     </Switch>
   </Layout>
@@ -32,7 +32,7 @@ const Routes = ({ isLoggedIn }) => (
 );
 
 const mapStateToProps = (state) => ({
-  isLoggedIn: state.auth.isToken,
+  isLoggedIn: state.auth.token,
 });
 
 export default connect(mapStateToProps)(Routes);

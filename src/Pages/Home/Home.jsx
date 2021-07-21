@@ -9,15 +9,17 @@ import { Loader } from '../../UIElements';
 import Articles from '../../Components/Articles';
 import Sidebar from '../../Components/Sidebar';
 import Pagination from '../../Components/Pagination';
+// eslint-disable-next-line import/named
 import { fetchArticles } from '../../redux/modules/articles';
 import { fetchTags } from '../../redux/modules/tags';
-import { useTimer } from '../../custom-hooks/useTimer';
+import { useTimer } from '../../utils/custom-hooks/useTimer';
 
 const Home = () => {
   const [tabs, setTabs] = useState(data.tabs);
   const [activeTab, setActiveTab] = useState(() => data.tabs[1]);
   const [selectedTag, setSelectedTag] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [yourFeed, setYourFeed] = useState('');
 
   const articlesList = useSelector((state) => state.articles.articlesList);
   const articlesCount = useSelector((state) => state.articles.articlesCount);
@@ -36,26 +38,41 @@ const Home = () => {
   const hideTagsTab = (tab) => {
     setTabs(data.tabs);
     setActiveTab(tab);
-    setSelectedTag(null);
+    setSelectedTag('');
   };
 
-  useTimer(fetchArticles, 600000);
+  const activeTabHandler = (tab) => {
+    if (tab === tabs[0]) {
+      setYourFeed('feed');
+    } else if (tab === tabs[1]) {
+      setYourFeed('');
+    }
+    hideTagsTab(tab);
+  };
+
+  useTimer(() => fetchArticles({
+    activeTab, username: '', tag: selectedTag, id: '',
+  }), 600000);
   useTimer(fetchTags, 600000);
 
   useEffect(() => {
     setIsLoading(true);
-    dispatch(fetchArticles(selectedTag));
+    dispatch(fetchArticles({
+      activeTab, username: '', tag: selectedTag, id: '',
+    }));
     setIsLoading(false);
   }, [selectedTag]);
 
   useEffect(() => {
-    dispatch(fetchArticles());
-  }, [pagination.offset, activeTab]);
+    dispatch(fetchArticles({
+      activeTab, username: '', tag: selectedTag, id: '',
+    }));
+  }, [pagination.offset, yourFeed]);
 
   return (
     <div className={classes.HomePage}>
       <Content>
-        <Tabs {...{ tabs, activeTab }} hideTagsTab={hideTagsTab} />
+        <Tabs {...{ tabs, activeTab }} onTabClick={activeTabHandler} />
         {isLoading ? <Loader /> : <Articles articlesList={articlesList} /> }
       </Content>
       <Sidebar tags={tagsList} onTagClick={showTagsTab} />

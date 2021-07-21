@@ -1,6 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
+import { registration } from '../../../redux/modules/auth';
 
 import classes from './SignUpForm.module.css';
 import { Button, BUTTON_TYPE } from '../../../UIElements';
@@ -14,39 +16,40 @@ const SignUpSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const SignUpForm = () => (
-  <div className={classes.SignUpForm}>
-    <Formik
-      initialValues={{
-        username: '',
-        email: '',
-        password: '',
-      }}
-      validationSchema={SignUpSchema}
-      onSubmit={(values, { resetForm }) => {
-        // same shape as initial values
-        // eslint-disable-next-line no-console
-        console.log(values);
-        resetForm();
-      }}
-    >
-      {({ errors, touched }) => (
-        <>
-          <h1>Sign Up</h1>
-          <p>Have an account?</p>
-          <Form>
-            {errors.username && touched.username ? <div className={classes.error}>{errors.username}</div> : null}
-            <Field name="username" type="text" placeholder="Username" />
-            {errors.email && touched.email ? <div className={classes.error}>{errors.email}</div> : null}
-            <Field name="email" type="email" placeholder="Email" />
-            {errors.password && touched.password ? <div className={classes.error}>{errors.password}</div> : null}
-            <Field name="password" type="password" placeholder="Password" />
-            <Button type="submit" btnType={BUTTON_TYPE.PRIMARY}>Sign Up</Button>
-          </Form>
-        </>
-      )}
-    </Formik>
-  </div>
-);
+const SignUpForm = () => {
+  const dispatch = useDispatch();
+  return (
+    <div className={classes.SignUpForm}>
+      <Formik
+        initialValues={{
+          username: '',
+          email: '',
+          password: '',
+        }}
+        validationSchema={SignUpSchema}
+        onSubmit={(values, { resetForm }) => {
+          dispatch(registration({ user: { ...values } }));
+          resetForm();
+        }}
+      >
+        {({ errors, touched }) => (
+          <>
+            <h1>Sign Up</h1>
+            <p>Have an account?</p>
+            <Form>
+              {errors.username && touched.username ? <div className={classes.error}>{errors.username}</div> : null}
+              <Field name="username" type="text" placeholder="Username" />
+              {errors.email && touched.email ? <div className={classes.error}>{errors.email}</div> : null}
+              <Field name="email" type="email" placeholder="Email" />
+              {errors.password && touched.password ? <div className={classes.error}>{errors.password}</div> : null}
+              <Field name="password" type="password" placeholder="Password" />
+              <Button type="submit" btnType={BUTTON_TYPE.PRIMARY}>Sign Up</Button>
+            </Form>
+          </>
+        )}
+      </Formik>
+    </div>
+  );
+};
 
 export default SignUpForm;

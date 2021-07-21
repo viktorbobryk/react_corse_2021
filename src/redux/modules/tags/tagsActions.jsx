@@ -1,5 +1,5 @@
 import * as actionTypes from './tagsTypes';
-import axios from '../../../axios/axios';
+import { makeRequest, urls } from '../../../utils/apiService';
 
 export const setTags = (tags) => ({
   type: actionTypes.SET_TAGS,
@@ -7,8 +7,8 @@ export const setTags = (tags) => ({
 });
 
 export const fetchTags = () => (dispatch) => {
-  axios.get('/tags')
-    .then((tags) => {
-      dispatch(setTags(tags.data.tags));
+  makeRequest.get(urls.tags())
+    .then((data) => {
+      dispatch(setTags(data.tags));
     });
 };

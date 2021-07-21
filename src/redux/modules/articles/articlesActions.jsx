@@ -1,17 +1,18 @@
 import * as actionTypes from './articlesTypes';
-import axios from '../../../axios/axios';
-import store from '../../store';
+import { makeRequest, urls } from '../../../utils/apiService';
+import { mapQueryParamsToPath } from '../../../utils/mapQueryParamsToPath/mapQueryParamsToPath';
 
 export const setArticles = (articles) => ({
   type: actionTypes.SET_ARTICLES,
   payload: articles,
 });
 
-export const fetchArticles = (tag = '') => (dispatch) => {
-  const { limit, offset } = store.getState().articles.pagination;
-  axios.get(tag ? `articles?limit=${limit}&offset=${offset}&tag=${tag}` : `articles?limit=${limit}&offset=${offset}`)
-    .then((articles) => {
-      dispatch(setArticles(articles.data));
+export const fetchArticles = (queryParams) => (dispatch) => {
+  const query = mapQueryParamsToPath(queryParams);
+
+  makeRequest.get(urls.articles(query))
+    .then((data) => {
+      dispatch(setArticles(data));
     });
 };
 
@@ -20,10 +21,11 @@ export const setSelectedArticle = (article) => ({
   payload: article,
 });
 
-export const fetchSelectedArticle = (id) => (dispatch) => {
-  axios.get(`/articles/${id}`)
-    .then((article) => {
-      dispatch(setSelectedArticle(article.data));
+export const fetchSelectedArticle = (queryParams) => (dispatch) => {
+  const query = mapQueryParamsToPath(queryParams);
+  makeRequest.get(urls.articles(query))
+    .then((data) => {
+      dispatch(setSelectedArticle(data));
     });
 };
 
@@ -31,3 +33,13 @@ export const paginatedArticles = (value) => ({
   type: actionTypes.PAGINATED_ARTICLES,
   payload: value,
 });
+
+export const addNewArticle = (article, token) => () => {
+  makeRequest.post(urls.articles(), article, token)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error.response);
+    });
+};

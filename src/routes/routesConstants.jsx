@@ -4,6 +4,6 @@ export default {
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
   EDITOR: '/editor',
-  PROFILE: '/profile',
+  PROFILE: '/:username',
   SETTINGS: '/settings',
 };
