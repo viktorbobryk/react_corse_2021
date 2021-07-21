@@ -1,104 +1,116 @@
 .Button {
-    background-color: transparent;
-    border: none;
-    color: var(--grey);
-    outline: none;
-    cursor: pointer;
-    font: inherit;
-    padding: 10px;
-    margin: 10px;
+  padding: 10px;
+  border: none;
+  margin: 10px;
+  background-color: transparent;
+  color: var(--grey);
+  outline: none;
+  cursor: pointer;
+  font: inherit;
 }
 
 .Like {
-    border: 2px solid var(--green);
-    max-width: 60px;
-    color: var(--green);
-    border-radius: 5px;
-    text-align: right;
-    padding: 5px 10px;
-}
-.Like:hover{
-    background: var(--green);
-    color: var(--white);
-}
-.Like::before{
-    font-family: "Font Awesome 5 Free", serif; font-weight: 900; content: "\f004";
-    margin-right: 5px;
+  max-width: 60px;
+  padding: 5px 10px;
+  border: 2px solid var(--green);
+  border-radius: 5px;
+  color: var(--green);
+  text-align: right;
 }
 
-.Light{
-    border: none;
-    margin-left: 0;
-    padding-left: 0;
+.Like:hover {
+  background: var(--green);
+  color: var(--white);
+}
+
+.Like::before {
+  margin-right: 5px;
+  font-family: "Font Awesome 5 Free", serif;
+  font-weight: 900;
+  content: "\f004";
+}
+
+.Light {
+  padding-left: 0;
+  border: none;
+  margin-left: 0;
 }
 
 .Primary {
-    color: var(--white);
-    background-color: var(--green);
-    border-color: var(--green);
-    border-radius: 8px;
-    width: 170px;
-    margin-right: 0;
-    float: right;
-}
-.Primary:hover {
-    color: #fff;
-    background-color: var(--dark-green);
-    border-color: var(--dark-green);
-}
-.Secondary{
-    color: #fff;
-    background-color: var(--grey);
-    border-color: var(--grey);
-}
-.Secondary:hover{
-    color: #ccc;
-    background-image: none;
-    background-color: var(--transparent);
-    border-color: var(--grey);
+  width: 170px;
+  border-radius: 8px;
+  border-color: var(--green);
+  margin-right: 0;
+  background-color: var(--green);
+  color: var(--white);
+  float: right;
 }
 
-.Secondary-outline{
-    color: #ccc;
-    background-image: none;
-    background-color: var(--transparent);
-    border: 1px solid var(--grey);
+.Primary:hover {
+  border-color: var(--dark-green);
+  background-color: var(--dark-green);
+  color: #fff;
 }
-.Secondary-outline:hover{
-    color: var(--white);
-    background-color: var(--grey);
-    border-color: var(--grey);
+
+.Secondary {
+  border-color: var(--grey);
+  background-color: var(--grey);
+  color: #fff;
+}
+
+.Secondary:hover {
+  border-color: var(--grey);
+  background-color: var(--transparent);
+  background-image: none;
+  color: #ccc;
+}
+
+.Secondary-outline {
+  border: 1px solid var(--grey);
+  background-color: var(--transparent);
+  background-image: none;
+  color: #ccc;
+}
+
+.Secondary-outline:hover {
+  border-color: var(--grey);
+  background-color: var(--grey);
+  color: var(--white);
 }
 
 .Danger {
-    color: var(--white);
-    background-color: var(--red);
-    border-color: var(--red);
-}
-.Danger:hover{
-    color: var(--red);
-    background-image: none;
-    background-color: var(--transparent);
-    border-color: var(--red);
+  border-color: var(--red);
+  background-color: var(--red);
+  color: var(--white);
 }
 
-.Danger-outline{
-    color: var(--red);
-    background-image: none;
-    background-color: var(--transparent);
-    border: 1px solid var(--red);
+.Danger:hover {
+  border-color: var(--red);
+  background-color: var(--transparent);
+  background-image: none;
+  color: var(--red);
 }
-.Danger-outline:hover{
-    color: var(--white);
-    background-color: var(--red);
-    border-color: var(--red);
+
+.Danger-outline {
+  border: 1px solid var(--red);
+  background-color: var(--transparent);
+  background-image: none;
+  color: var(--red);
 }
-.Simple{
- border: none;
- background-color: var(--transparent);
- color: var(--grey);
- font-weight: bold;
+
+.Danger-outline:hover {
+  border-color: var(--red);
+  background-color: var(--red);
+  color: var(--white);
 }
-.Simple:hover{
-    color: var(--dark-grey);
+
+.Simple {
+  border: none;
+  background-color: var(--transparent);
+  color: var(--grey);
+  font-weight: bold;
+}
+
+.Simple:hover {
+  color: var(--dark-grey);
 }

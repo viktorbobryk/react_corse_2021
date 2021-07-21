@@ -1,5 +1,5 @@
-.Content{
-    flex: 3;
-    width: 70%;
-    overflow: hidden;
+.Content {
+  flex: 3;
+  overflow: hidden;
+  width: 70%;
 }

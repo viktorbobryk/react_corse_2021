@@ -1,20 +1,22 @@
-.ArticlePreview{
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    border-top: 1px solid var(--grey);
-    padding: 10px 0;
+.ArticlePreview {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 10px 0;
+  border-top: 1px solid var(--grey);
 }
 
-.rightSide{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
 }
-.leftSide{
-    max-width: 180px;
+
+.leftSide {
+  max-width: 180px;
 }
-.link{
-    text-decoration: none;
+
+.link {
+  text-decoration: none;
 }

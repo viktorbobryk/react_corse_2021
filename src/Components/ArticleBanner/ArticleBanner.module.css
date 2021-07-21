@@ -1,11 +1,12 @@
-.Banner{
-    display: flex;
-    flex-wrap: wrap;
-    color: var(--white);
-    background: var(--dark-grey);
-    padding: 10px 30px;
-    margin-bottom: 20px;
+.Banner {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 30px;
+  margin-bottom: 20px;
+  background: var(--dark-grey);
+  color: var(--white);
 }
-.Banner h2{
-    flex: 0 0 100%;
+
+.Banner h2 {
+  flex: 0 0 100%;
 }

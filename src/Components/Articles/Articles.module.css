@@ -1,3 +1,4 @@
-.Articles{
-
+.Articles {
+  display: flex;
+  flex-direction: column;
 }

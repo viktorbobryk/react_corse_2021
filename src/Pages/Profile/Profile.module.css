@@ -1,11 +1,14 @@
-.Profile{
+.Profile {
+  display: flex;
+  flex-direction: column;
+}
 
+.user {
+  padding: 20px 0 10px 0;
+  background: var(--light-grey);
+  text-align: center;
 }
-.user{
-    text-align: center;
-    background: var(--light-grey);
-    padding: 20px 0 10px 0;
-}
-.user img{
-    border-radius: 50%;
+
+.user img {
+  border-radius: 50%;
 }

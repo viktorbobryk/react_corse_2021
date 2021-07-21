@@ -1,21 +1,28 @@
-.MenuItem{
-    display: inline-block;
-    text-transform: capitalize;
-    color: var(--dark-grey);
-    margin-left: 10px;
-    list-style-type: none;
+.MenuItem {
+  display: inline-block;
+  margin-left: 10px;
+  color: var(--dark-grey);
+  text-transform: capitalize;
+  list-style-type: none;
 }
-.MenuItem:hover{
-    color: var(--black);
-    cursor: pointer;
+
+.MenuItem:hover {
+  color: var(--black);
+  cursor: pointer;
 }
-.MenuItem a{
-    text-decoration: none;
+
+.MenuItem a {
+  text-decoration: none;
 }
+
 .article::before {
-    font-family: "Font Awesome 5 Free", serif; font-weight: 900; content: "\f044";
+  font-family: "Font Awesome 5 Free", serif;
+  font-weight: 900;
+  content: "\f044";
 }
 
 .settings::before {
-    font-family: "Font Awesome 5 Free", serif; font-weight: 900; content: "\f013";
+  font-family: "Font Awesome 5 Free", serif;
+  font-weight: 900;
+  content: "\f013";
 }

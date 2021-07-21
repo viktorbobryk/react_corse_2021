@@ -1,6 +1,6 @@
-.Logo{
-    text-decoration: none;
-    color: var(--green);
-    font-size: 20px;
-    font-weight: bold;
+.Logo {
+  color: var(--green);
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
 }

@@ -1,24 +1,26 @@
-.Tag{
-    margin: 2px;
-    padding: 0 5px 1px;
-    border-radius: 11px;
-    display: inline-block;
-    font-size: 14px;
-}
-.Tag:hover{
-    cursor: pointer;
+.Tag {
+  display: inline-block;
+  padding: 0 5px 1px;
+  border-radius: 11px;
+  margin: 2px;
+  font-size: 14px;
 }
 
-.darkTag{
-    background-color: var(--tag-bg);
-    color: var(--white);
-}
-.darkTag:hover{
-    background-color: var(--tag-dark-bg);
+.Tag:hover {
+  cursor: pointer;
 }
 
-.lightTag{
-    background-color: var(--white);
-    border: 1px solid var(--grey);
-    color: var(--grey);
+.darkTag {
+  background-color: var(--tag-bg);
+  color: var(--white);
+}
+
+.darkTag:hover {
+  background-color: var(--tag-dark-bg);
+}
+
+.lightTag {
+  border: 1px solid var(--grey);
+  background-color: var(--white);
+  color: var(--grey);
 }

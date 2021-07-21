@@ -1,9 +1,10 @@
-.Layout{
-    flex-wrap: wrap;
-    display: flex;
-    width: 80%;
-    margin: 0 auto;
+.Layout {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
 }
-.Layout main{
-    width: 100%;
+
+.Layout main {
+  width: 100%;
 }

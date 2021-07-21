@@ -1,18 +1,21 @@
-.Pagination{
-    flex: 0 0 100%;
+.Pagination {
+  flex: 0 0 100%;
 }
-.Pagination ul{
-    padding-left: 0;
+
+.Pagination ul {
+  padding-left: 0;
 }
-.Pagination li{
-    list-style-type: none;
-    display: inline-block;
-    border: 1px solid var(--grey);
-    margin-left: 5px;
-    padding: 5px 10px;
-    color: var(--green);
+
+.Pagination li {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid var(--grey);
+  margin-left: 5px;
+  color: var(--green);
+  list-style-type: none;
 }
-.Pagination li:hover{
-    background-color: var(--light-grey);
-    cursor: pointer;
+
+.Pagination li:hover {
+  background-color: var(--light-grey);
+  cursor: pointer;
 }
