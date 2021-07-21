@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { addNewArticle } from '../../../redux/modules/articles';
@@ -16,7 +16,6 @@ const EditorSchema = Yup.object().shape({
 
 const EditorForm = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.isToken);
   return (
     <div className={classes.EditorForm}>
       <Formik
@@ -28,7 +27,7 @@ const EditorForm = () => {
         }}
         validationSchema={EditorSchema}
         onSubmit={(values, { resetForm }) => {
-          dispatch(addNewArticle(values, token));
+          dispatch(addNewArticle(values));
           console.log(values);
           resetForm();
         }}

@@ -9,6 +9,7 @@ import { Loader } from '../../UIElements';
 import Articles from '../../Components/Articles';
 import Sidebar from '../../Components/Sidebar';
 import Pagination from '../../Components/Pagination';
+// eslint-disable-next-line import/named
 import { fetchArticles } from '../../redux/modules/articles';
 import { fetchTags } from '../../redux/modules/tags';
 import { useTimer } from '../../utils/custom-hooks/useTimer';
@@ -37,7 +38,7 @@ const Home = () => {
   const hideTagsTab = (tab) => {
     setTabs(data.tabs);
     setActiveTab(tab);
-    setSelectedTag(null);
+    setSelectedTag('');
   };
 
   const activeTabHandler = (tab) => {
@@ -49,19 +50,23 @@ const Home = () => {
     hideTagsTab(tab);
   };
 
-  useTimer(fetchArticles, 600000);
+  useTimer(() => fetchArticles({
+    activeTab, username: '', tag: selectedTag, id: '',
+  }), 600000);
   useTimer(fetchTags, 600000);
 
   useEffect(() => {
-    console.log('[selectedTag]');
     setIsLoading(true);
-    dispatch(fetchArticles('', '', selectedTag));
+    dispatch(fetchArticles({
+      activeTab, username: '', tag: selectedTag, id: '',
+    }));
     setIsLoading(false);
   }, [selectedTag]);
 
   useEffect(() => {
-    console.log('[pagination.offset, activeTab]');
-    dispatch(fetchArticles('', '', '', yourFeed));
+    dispatch(fetchArticles({
+      activeTab, username: '', tag: selectedTag, id: '',
+    }));
   }, [pagination.offset, yourFeed]);
 
   return (

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+// import makeQueryParams from '../../utils/mapQueryParamsToPath/makeQueryParams';
 
 import classes from './Profile.module.css';
 import { Button, BUTTON_TYPE } from '../../UIElements';
 import Tabs from '../../Components/Tabs';
 import Articles from '../../Components/Articles';
 import ROUTES from '../../routes/routesConstants';
+// eslint-disable-next-line import/named
 import { fetchArticles } from '../../redux/modules/articles';
 import avatar from '../../assets/images/smiley-cyrus.jpg';
 
@@ -23,18 +25,16 @@ const Profile = () => {
 
   const navigateToSettings = () => history.push(ROUTES.SETTINGS);
   const activeTabeHandler = (tab) => {
-    let option = '';
-    if (tab === tabs[0]) {
-      option = 'author';
-    } else if (tab === tabs[1]) {
-      option = 'favorited';
-    }
     setActiveTab(tab);
-    dispatch(fetchArticles(option, username, '', ''));
+    dispatch(fetchArticles({
+      activeTab, username, tag: '', id: '',
+    }));
   };
 
   useEffect(() => {
-    dispatch(fetchArticles('author', username, '', ''));
+    dispatch(fetchArticles({
+      activeTab, username, tag: '', id: '',
+    }));
   }, []);
 
   return (

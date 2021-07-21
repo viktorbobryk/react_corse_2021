@@ -1,32 +1,16 @@
 import * as actionTypes from './articlesTypes';
-import store from '../../store';
 import { makeRequest, urls } from '../../../utils/apiService';
+import { mapQueryParamsToPath } from '../../../utils/mapQueryParamsToPath/mapQueryParamsToPath';
 
 export const setArticles = (articles) => ({
   type: actionTypes.SET_ARTICLES,
   payload: articles,
 });
 
-export const fetchArticles = (options = '', username = '', tag = '', yourfeed = '') => (dispatch) => {
-  const { limit, offset } = store.getState().articles.pagination;
-  const token = store.getState().auth.isToken;
-  const queryTag = tag ? `&tag=${tag}` : '';
-  const queryOption = options ? `${options}=` : '';
-  const queryUserName = username ? `${username}&` : '';
-  const queryYourFeed = yourfeed ? `/${yourfeed}` : '';
+export const fetchArticles = (queryParams) => (dispatch) => {
+  const query = mapQueryParamsToPath(queryParams);
 
-  const query = `${queryYourFeed}?${queryOption}${queryUserName}limit=${limit}&offset=${offset}${queryTag}`;
-
-  makeRequest.get(urls.articles(query), token)
-    .then((data) => {
-      dispatch(setArticles(data));
-    });
-};
-
-export const fetchMyArticles = (option = '', username = '') => (dispatch) => {
-  const { limit, offset } = store.getState().articles.pagination;
-
-  makeRequest.get(urls.articles(`?${option}${username}limit=${limit}&offset=${offset}`))
+  makeRequest.get(urls.articles(query))
     .then((data) => {
       dispatch(setArticles(data));
     });
@@ -37,8 +21,9 @@ export const setSelectedArticle = (article) => ({
   payload: article,
 });
 
-export const fetchSelectedArticle = (id) => (dispatch) => {
-  makeRequest.get(urls.articles(`/${id}`))
+export const fetchSelectedArticle = (queryParams) => (dispatch) => {
+  const query = mapQueryParamsToPath(queryParams);
+  makeRequest.get(urls.articles(query))
     .then((data) => {
       dispatch(setSelectedArticle(data));
     });

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { fetchComments } from '../../redux/modules/comments';
+// eslint-disable-next-line import/named
 import { fetchSelectedArticle } from '../../redux/modules/articles';
 import classes from './Article.module.css';
 import ArticleBanner from '../../Components/ArticleBanner';
@@ -20,7 +21,9 @@ const Article = ({ match }) => {
 
   useEffect(() => {
     dispatch(fetchComments(match.params.id));
-    dispatch(fetchSelectedArticle(match.params.id));
+    dispatch(fetchSelectedArticle({
+      activeTab: '', username: '', tag: '', id: match.params.id,
+    }));
   }, []);
 
   return (

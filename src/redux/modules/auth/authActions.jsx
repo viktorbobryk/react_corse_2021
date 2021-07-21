@@ -9,15 +9,18 @@ export const setUser = (id) => ({
   type: actionsTypes.AUTH_SET_USER,
   payload: id,
 });
+export const authSuccess = (response, dispatch) => {
+  // eslint-disable-next-line no-undef
+  localStorage.setItem('token', response.data.user.token);
+  // eslint-disable-next-line no-undef
+  localStorage.setItem('user', JSON.stringify(response.data.user));
+  dispatch(setToken(response.data.user.token));
+  dispatch(setUser(response.data.user));
+};
 export const registration = (user) => (dispatch) => {
   makeRequest.post(urls.registration(), user)
     .then((response) => {
-      // eslint-disable-next-line no-undef
-      localStorage.setItem('token', response.data.user.token);
-      // eslint-disable-next-line no-undef
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      dispatch(setToken(response.data.user.token));
-      dispatch(setUser(response.data.user));
+      authSuccess(response, dispatch);
     })
     .catch((error) => {
       console.log(error.response);
@@ -35,12 +38,9 @@ export const logout = () => {
 export const login = (user) => (dispatch) => {
   makeRequest.post(urls.login(), user)
     .then((response) => {
+      console.log(response);
       // eslint-disable-next-line no-undef
-      localStorage.setItem('token', response.data.user.token);
-      // eslint-disable-next-line no-undef
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      dispatch(setToken(response.data.user.token));
-      dispatch(setUser(response.data.user));
+      authSuccess(response, dispatch);
     })
     .catch((error) => {
       console.log(error.response);
