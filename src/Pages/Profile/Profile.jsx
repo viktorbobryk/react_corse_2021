@@ -9,7 +9,7 @@ import Tabs from '../../Components/Tabs';
 import Articles from '../../Components/Articles';
 import ROUTES from '../../routes/routesConstants';
 // eslint-disable-next-line import/named
-import { fetchArticles } from '../../redux/modules/articles';
+import { fetchArticles } from '../../redux/modules/articles/articlesActions';
 import avatar from '../../assets/images/smiley-cyrus.jpg';
 
 const tabs = ['My Articles', 'Favorited Articles'];

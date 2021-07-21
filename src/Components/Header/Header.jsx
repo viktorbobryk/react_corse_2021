@@ -4,7 +4,7 @@ import classes from './Header.module.css';
 import { Logo } from '../../UIElements';
 import Menu from '../Menu';
 import data from '../../data';
-import { autoLogin } from '../../redux/modules/auth';
+import { autoLogin } from '../../redux/modules/auth/authActions';
 
 const Header = () => {
   const userData = useSelector((state) => state.auth.user);

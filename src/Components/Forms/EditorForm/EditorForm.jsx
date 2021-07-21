@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { addNewArticle } from '../../../redux/modules/articles';
+import { addNewArticle } from '../../../redux/modules/articles/articlesActions';
 
 import classes from './EditorForm.module.css';
 import { Button, BUTTON_TYPE } from '../../../UIElements';

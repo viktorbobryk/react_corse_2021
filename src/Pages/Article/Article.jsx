@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { fetchComments } from '../../redux/modules/comments';
+import { fetchComments } from '../../redux/modules/comments/commentsActions';
 // eslint-disable-next-line import/named
-import { fetchSelectedArticle } from '../../redux/modules/articles';
+import { fetchSelectedArticle } from '../../redux/modules/articles/articlesActions';
 import classes from './Article.module.css';
 import ArticleBanner from '../../Components/ArticleBanner';
 import Content from '../../Components/Content';

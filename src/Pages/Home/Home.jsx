@@ -10,8 +10,8 @@ import Articles from '../../Components/Articles';
 import Sidebar from '../../Components/Sidebar';
 import Pagination from '../../Components/Pagination';
 // eslint-disable-next-line import/named
-import { fetchArticles } from '../../redux/modules/articles';
-import { fetchTags } from '../../redux/modules/tags';
+import { fetchArticles } from '../../redux/modules/articles/articlesActions';
+import { fetchTags } from '../../redux/modules/tags/tagsActions';
 import { useTimer } from '../../utils/custom-hooks/useTimer';
 
 const Home = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { login } from '../../../redux/modules/auth';
+import { login } from '../../../redux/modules/auth/authActions';
 
 import classes from './SignInForm.module.css';
 import { Button, BUTTON_TYPE } from '../../../UIElements';

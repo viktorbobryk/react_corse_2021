@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 // eslint-disable-next-line no-unused-vars
-import { logout } from '../../../redux/modules/auth';
+import { logout } from '../../../redux/modules/auth/authActions';
 
 import classes from './SettingsForm.module.css';
 import { Button, BUTTON_TYPE } from '../../../UIElements';
