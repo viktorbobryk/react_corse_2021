@@ -1,4 +1,4 @@
-import { SET_ARTICLES, PAGINATED_ARTICLES, SET_SELECTED_ARTICLE } from './articlesTypes';
+ import { SET_ARTICLES, PAGINATED_ARTICLES, SET_SELECTED_ARTICLE } from './articlesTypes';
 
 const initialState = {
   pagination: {
